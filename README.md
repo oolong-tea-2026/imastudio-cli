@@ -2,7 +2,7 @@
 
 Command-line tool for [IMA Studio](https://imastudio.com) — AI content generation platform.
 
-Generate images, videos, and music from the command line. Designed for both human use and AI agent integration.
+Generate images, videos, music, and speech from the command line. Designed for both human use and AI agent integration.
 
 ## Install
 
@@ -34,6 +34,19 @@ ima create-task \
 # 5. Check a task
 ima task-status <task-id>
 ```
+
+## Task Types
+
+| Task Type | Input | Output | Description |
+|-----------|-------|--------|-------------|
+| `text_to_image` | prompt | image | Generate an image from a text prompt. |
+| `image_to_image` | prompt + image(s) | image | Edit a single image (style transfer, object removal, etc.) or fuse multiple reference images into one. |
+| `text_to_video` | prompt | video | Generate a video from a text prompt. |
+| `image_to_video` | prompt + image | video | Generate a video using the input image as the first frame. |
+| `first_last_frame_to_video` | prompt + 2 images | video | Generate a video that starts with the first image and ends with the second. |
+| `reference_image_to_video` | prompt + image(s) | video | Generate a video using reference images for visual guidance (characters, style, objects) — not as literal frames. |
+| `text_to_music` | prompt | audio | Generate instrumental music from a description, or a full song (vocals + music) from lyrics. |
+| `text_to_speech` | text | audio | Convert text into spoken audio (TTS). |
 
 ## Commands
 
