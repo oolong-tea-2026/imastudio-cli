@@ -1,0 +1,37 @@
+{
+  "name": "imastudio-cli",
+  "version": "0.1.0",
+  "description": "IMA Studio CLI - Command-line tool for IMA Studio AI content generation platform",
+  "main": "src/index.js",
+  "bin": {
+    "ima": "bin/ima.js"
+  },
+  "scripts": {
+    "test": "node --test test/",
+    "lint": "eslint src/"
+  },
+  "keywords": [
+    "ima",
+    "imastudio",
+    "ai",
+    "image-generation",
+    "video-generation",
+    "music-generation",
+    "text-to-image",
+    "text-to-video",
+    "cli"
+  ],
+  "author": "IMA Studio",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/oolong-tea-2026/imastudio-cli.git"
+  },
+  "homepage": "https://imastudio.com",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "commander": "^12.0.0"
+  }
+}
