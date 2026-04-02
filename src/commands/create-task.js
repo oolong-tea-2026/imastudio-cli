@@ -7,18 +7,79 @@ const { ImaClient, uploadToOss } = require('../api');
 const { bold, cyan, dim, green, yellow, red, spinner, handleError } = require('../output');
 const { fetchProducts, findModel } = require('./list-models');
 
+/**
+ * Parse --param key=value pairs into an object.
+ * Repeated keys become arrays.
+ */
+function parseParams(paramList) {
+  const result = {};
+  if (!paramList || !paramList.length) return result;
+
+  for (const item of paramList) {
+    const eqIdx = item.indexOf('=');
+    if (eqIdx === -1) {
+      console.error(`${red('✗')} Invalid --param format: "${item}" (expected key=value)`);
+      process.exit(1);
+    }
+    const key = item.substring(0, eqIdx).trim();
+    const value = item.substring(eqIdx + 1).trim();
+
+    if (key in result) {
+      // Repeated key → array
+      if (Array.isArray(result[key])) {
+        result[key].push(value);
+      } else {
+        result[key] = [result[key], value];
+      }
+    } else {
+      result[key] = value;
+    }
+  }
+
+  return result;
+}
+
+/**
+ * Resolve input_images: upload local files, pass URLs through.
+ * Accepts a single string or array of strings.
+ */
+async function resolveInputImages(images, apiKey) {
+  if (!images) return [];
+  const list = Array.isArray(images) ? images : [images];
+  const urls = [];
+
+  for (const img of list) {
+    if (img.startsWith('http://') || img.startsWith('https://')) {
+      urls.push(img);
+    } else {
+      const resolved = path.resolve(img);
+      if (!fs.existsSync(resolved)) {
+        console.error(`${red('✗')} File not found: ${resolved}`);
+        process.exit(1);
+      }
+      const spin = spinner(`Uploading ${path.basename(resolved)}...`);
+      const ext = path.extname(resolved).toLowerCase();
+      const mime = {
+        '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg',
+        '.png': 'image/png', '.webp': 'image/webp', '.gif': 'image/gif',
+      }[ext] || 'image/jpeg';
+      const buffer = fs.readFileSync(resolved);
+      const url = await uploadToOss(buffer, mime, apiKey);
+      urls.push(url);
+      spin.stop(`${green('✓')} Uploaded: ${dim(path.basename(resolved))}`);
+    }
+  }
+
+  return urls;
+}
+
 module.exports = function registerCreateTask(program) {
   program
     .command('create-task')
     .description('Create an AI generation task')
-    .requiredOption('--task-type <type>', 'Task type (text_to_image, image_to_image, etc.)')
-    .requiredOption('--model <model>', 'Model (version_id or name from "ima list-models")')
-    .requiredOption('--prompt <text>', 'Generation prompt')
-    .option('--input-images <paths...>', 'Input image(s) — local paths or URLs')
-    .option('--size <size>', 'Output size (e.g., 1K, 2K, 4K, 512px)')
-    .option('--aspect-ratio <ratio>', 'Aspect ratio (e.g., 16:9, 9:16, 4:3)')
-    .option('--n <count>', 'Number of outputs (default: 1)', '1')
-    .option('--attribute-id <id>', 'Override attribute_id (advanced)')
+    .requiredOption('--task-type <type>', 'Task type (e.g., text_to_image, text_to_video)')
+    .requiredOption('--model <model>', 'Model (from "ima list-models")')
+    .option('--param <key=value...>', 'Model parameter (repeatable, e.g., --param prompt="a cat" --param size=4k)')
     .option('--wait', 'Wait for task to complete and print result URL')
     .option('--poll-interval <seconds>', 'Polling interval in seconds (default: 5)', '5')
     .option('--timeout <seconds>', 'Max wait time in seconds (default: 300)', '300')
@@ -30,7 +91,15 @@ module.exports = function registerCreateTask(program) {
         const baseUrl = getBaseUrl(rootOpts);
         const client = new ImaClient(apiKey, baseUrl);
 
-        // 1. Fetch product info
+        // 1. Parse --param key=value pairs
+        const params = parseParams(opts.param);
+
+        if (!params.prompt) {
+          console.error(`${red('✗')} Missing required parameter: --param prompt="your prompt"`);
+          process.exit(1);
+        }
+
+        // 2. Fetch product info
         const spin1 = spinner('Fetching product info...');
         const { products } = await fetchProducts(opts.taskType, apiKey, baseUrl);
         spin1.stop();
@@ -42,18 +111,22 @@ module.exports = function registerCreateTask(program) {
           process.exit(1);
         }
 
-        // 2. Select credit rule (match by size if specified)
-        const rules = model.credit_rules || [];
-        let rule;
+        // 3. Upload input images if provided
+        const inputImageUrls = await resolveInputImages(params.input_images, apiKey);
+        delete params.input_images;
 
-        if (opts.attributeId) {
-          rule = rules.find((r) => String(r.attribute_id) === String(opts.attributeId));
-        } else if (opts.size) {
+        // 4. Select credit rule
+        const rules = model.credit_rules || [];
+        let rule = null;
+
+        // Try to match by params (size, resolution, duration, etc.)
+        if (rules.length > 1) {
           rule = rules.find((r) => {
             const attrs = r.attributes || {};
-            return Object.values(attrs).some(
-              (v) => String(v).toLowerCase() === opts.size.toLowerCase()
-            );
+            return Object.entries(attrs).every(([k, v]) => {
+              if (k === 'default' && v === 'enabled') return true;
+              return params[k] !== undefined ? String(params[k]).toLowerCase() === String(v).toLowerCase() : true;
+            });
           });
         }
 
@@ -64,30 +137,7 @@ module.exports = function registerCreateTask(program) {
           process.exit(1);
         }
 
-        // 3. Upload input images if needed
-        let inputImageUrls = [];
-        if (opts.inputImages && opts.inputImages.length) {
-          for (const img of opts.inputImages) {
-            if (img.startsWith('http://') || img.startsWith('https://')) {
-              inputImageUrls.push(img);
-            } else {
-              const spin = spinner(`Uploading ${path.basename(img)}...`);
-              const resolved = path.resolve(img);
-              if (!fs.existsSync(resolved)) {
-                spin.stop(`${red('✗')} File not found: ${resolved}`);
-                process.exit(1);
-              }
-              const ext = path.extname(resolved).toLowerCase();
-              const mime = { '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.png': 'image/png', '.webp': 'image/webp' }[ext] || 'image/jpeg';
-              const buffer = fs.readFileSync(resolved);
-              const url = await uploadToOss(buffer, mime, apiKey);
-              inputImageUrls.push(url);
-              spin.stop(`${green('✓')} Uploaded: ${dim(path.basename(img))}`);
-            }
-          }
-        }
-
-        // 4. Build form defaults from product config
+        // 5. Build form defaults from product config
         const formDefaults = {};
         for (const f of model.form_config || []) {
           if (f.value !== undefined && f.value !== null) {
@@ -95,19 +145,18 @@ module.exports = function registerCreateTask(program) {
           }
         }
 
-        // 5. Build nested parameters
+        // 6. Build nested parameters: form defaults < user params
+        const { prompt, ...extraParams } = params;
         const nestedParams = {
-          prompt: opts.prompt,
-          n: parseInt(opts.n, 10),
+          ...formDefaults,
+          ...extraParams,
+          prompt,
+          n: parseInt(params.n || '1', 10),
           input_images: inputImageUrls,
           cast: { points: rule.points, attribute_id: rule.attribute_id },
-          ...formDefaults,
         };
 
-        if (opts.size) nestedParams.size = opts.size;
-        if (opts.aspectRatio) nestedParams.aspect_ratio = opts.aspectRatio;
-
-        // 6. Create task — model_id, model_name, model_version filled internally
+        // 7. Create task
         const payload = {
           task_type: opts.taskType,
           enable_multi_model: false,
@@ -115,9 +164,9 @@ module.exports = function registerCreateTask(program) {
           parameters: [
             {
               attribute_id: rule.attribute_id,
-              model_id: model.model_id,       // internal, not user-facing
-              model_name: model.name,          // internal, not user-facing
-              model_version: model.id,         // version_id = the user-facing --model value
+              model_id: model.model_id,
+              model_name: model.name,
+              model_version: model.id,
               app: 'ima',
               platform: 'web',
               category: opts.taskType,
@@ -146,7 +195,7 @@ module.exports = function registerCreateTask(program) {
           return;
         }
 
-        // 7. Poll for result
+        // 8. Poll for result
         const interval = parseInt(opts.pollInterval, 10) * 1000;
         const timeout = parseInt(opts.timeout, 10) * 1000;
         const start = Date.now();
@@ -160,7 +209,6 @@ module.exports = function registerCreateTask(program) {
           const task = await client.getTaskDetail(taskId);
           const medias = task.medias || [];
 
-          // Check for failure
           if (task.status === 'failed' || medias.some((m) => (m.resource_status ?? 0) === 2)) {
             spin3.stop(`${red('✗')} Task failed`);
             if (rootOpts.json) console.log(JSON.stringify(task));
@@ -168,7 +216,6 @@ module.exports = function registerCreateTask(program) {
             process.exit(1);
           }
 
-          // Check for completion
           const allDone = medias.length > 0 && medias.every((m) => (m.resource_status ?? 0) === 1 && m.url);
           if (allDone) {
             spin3.stop(`${green('✓')} Complete! (${elapsed}s)`);
