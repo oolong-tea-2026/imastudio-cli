@@ -45,7 +45,6 @@ module.exports = function registerModelInfo(program) {
         }
 
         if (rootOpts.json) {
-          // Inject common inputs into JSON output too
           const inputs = TASK_INPUTS[opts.taskType] || { prompt: 'required', images: null };
           const enriched = { ...model, common_inputs: inputs };
           console.log(JSON.stringify(enriched, null, 2));
@@ -55,22 +54,18 @@ module.exports = function registerModelInfo(program) {
         console.log(`\n${bold(model.name)} ${dim(`(${model.id})`)}\n`);
         console.log(`  Task Type:   ${opts.taskType}`);
 
-        // Common inputs (prompt + input files)
+        // Parameters: common inputs first, then model-specific from form_config
         const inputs = TASK_INPUTS[opts.taskType] || { prompt: 'required', images: null };
-        console.log(`\n  ${bold('Inputs:')}`);
-        console.log(`    ${cyan('prompt')}:       ${inputs.prompt}`);
+        const formConfig = model.form_config || [];
+
+        console.log(`\n  ${bold('Parameters:')}`);
+        console.log(`    ${cyan('prompt')}: ${inputs.prompt}`);
         if (inputs.images) {
           console.log(`    ${cyan('input_images')}: ${inputs.images}`);
         }
-
-        // Model-specific parameters from form_config
-        const formConfig = model.form_config || [];
-        if (formConfig.length) {
-          console.log(`\n  ${bold('Model Parameters:')}`);
-          for (const f of formConfig) {
-            const options = (f.options || []).map((o) => o.value || o.label).join(', ');
-            console.log(`    ${cyan(f.field)}: ${f.value || '—'}${options ? dim(` [${options}]`) : ''}`);
-          }
+        for (const f of formConfig) {
+          const options = (f.options || []).map((o) => o.value || o.label).join(', ');
+          console.log(`    ${cyan(f.field)}: ${f.value || '—'}${options ? dim(` [${options}]`) : ''}`);
         }
 
         // Credit rules
