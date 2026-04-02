@@ -6,6 +6,7 @@ const { requireApiKey, getBaseUrl } = require('../config');
 const { ImaClient, uploadToOss } = require('../api');
 const { bold, cyan, dim, green, yellow, red, spinner, handleError } = require('../output');
 const { fetchProducts, findModel } = require('./list-models');
+const { buildInnerParams } = require('../params');
 
 /**
  * Parse --param key=value pairs into an object.
@@ -25,7 +26,6 @@ function parseParams(paramList) {
     const value = item.substring(eqIdx + 1).trim();
 
     if (key in result) {
-      // Repeated key → array
       if (Array.isArray(result[key])) {
         result[key].push(value);
       } else {
@@ -41,7 +41,6 @@ function parseParams(paramList) {
 
 /**
  * Resolve input_images: upload local files, pass URLs through.
- * Accepts a single string or array of strings.
  */
 async function resolveInputImages(images, apiKey) {
   if (!images) return [];
@@ -115,63 +114,37 @@ module.exports = function registerCreateTask(program) {
         const inputImageUrls = await resolveInputImages(params.input_images, apiKey);
         delete params.input_images;
 
-        // 4. Select credit rule
-        const rules = model.credit_rules || [];
-        let rule = null;
+        // 4. Build inner params using tested logic (virtual resolution, credit rule selection, normalization)
+        const { prompt, ...extraParams } = params;
+        const { inner, selectedRule } = buildInnerParams(model, opts.taskType, extraParams);
 
-        // Try to match by params (size, resolution, duration, etc.)
-        if (rules.length > 1) {
-          rule = rules.find((r) => {
-            const attrs = r.attributes || {};
-            return Object.entries(attrs).every(([k, v]) => {
-              if (k === 'default' && v === 'enabled') return true;
-              return params[k] !== undefined ? String(params[k]).toLowerCase() === String(v).toLowerCase() : true;
-            });
-          });
-        }
-
-        if (!rule) rule = rules[0];
-
-        if (!rule) {
+        if (!selectedRule) {
           console.error(`${red('✗')} No pricing rule found for this model.`);
           process.exit(1);
         }
 
-        // 5. Build form defaults from product config
-        const formDefaults = {};
-        for (const f of model.form_config || []) {
-          if (f.value !== undefined && f.value !== null) {
-            formDefaults[f.field] = f.value;
-          }
-        }
+        // 5. Set required fields
+        inner.prompt = prompt;
+        inner.n = parseInt(inner.n || '1', 10);
+        inner.input_images = inputImageUrls;
+        inner.cast = { points: selectedRule.points, attribute_id: selectedRule.attribute_id };
 
-        // 6. Build nested parameters: form defaults < user params
-        const { prompt, ...extraParams } = params;
-        const nestedParams = {
-          ...formDefaults,
-          ...extraParams,
-          prompt,
-          n: parseInt(params.n || '1', 10),
-          input_images: inputImageUrls,
-          cast: { points: rule.points, attribute_id: rule.attribute_id },
-        };
-
-        // 7. Create task
+        // 6. Create task
         const payload = {
           task_type: opts.taskType,
           enable_multi_model: false,
           src_img_url: inputImageUrls,
           parameters: [
             {
-              attribute_id: rule.attribute_id,
+              attribute_id: selectedRule.attribute_id,
               model_id: model.model_id,
               model_name: model.name,
               model_version: model.id,
               app: 'ima',
               platform: 'web',
               category: opts.taskType,
-              credit: rule.points,
-              parameters: nestedParams,
+              credit: selectedRule.points,
+              parameters: inner,
             },
           ],
         };
@@ -182,20 +155,20 @@ module.exports = function registerCreateTask(program) {
         spin2.stop(`${green('✓')} Task created: ${cyan(taskId)}`);
 
         if (rootOpts.json && !opts.wait) {
-          console.log(JSON.stringify({ task_id: taskId, model: model.name, model_version: model.id, credit: rule.points }));
+          console.log(JSON.stringify({ task_id: taskId, model: model.name, model_version: model.id, credit: selectedRule.points }));
           return;
         }
 
         if (!opts.wait) {
           console.log(`\n  Task ID:  ${cyan(taskId)}`);
           console.log(`  Model:   ${model.name} ${dim(`(${model.id})`)}`);
-          console.log(`  Cost:    ${rule.points} pts`);
+          console.log(`  Cost:    ${selectedRule.points} pts`);
           console.log(`\n  Check status: ${cyan(`ima task-status ${taskId}`)}`);
           if (!rootOpts.json) console.log(`  Or wait:      ${cyan(`ima create-task ... --wait`)}\n`);
           return;
         }
 
-        // 8. Poll for result
+        // 7. Poll for result
         const interval = parseInt(opts.pollInterval, 10) * 1000;
         const timeout = parseInt(opts.timeout, 10) * 1000;
         const start = Date.now();
@@ -224,7 +197,7 @@ module.exports = function registerCreateTask(program) {
                 task_id: taskId,
                 model: model.name,
                 model_version: model.id,
-                credit: rule.points,
+                credit: selectedRule.points,
                 elapsed_seconds: elapsed,
                 results: medias.map((m) => ({ url: m.url, width: m.width, height: m.height, format: m.format })),
               }, null, 2));

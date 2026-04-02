@@ -1,0 +1,564 @@
+[
+  {
+    "group": "virtual_param_resolution",
+    "model": "SeeDream 4.5",
+    "task_type": "text_to_image",
+    "version_id": "doubao-seedream-4-5-251128",
+    "input": {
+      "virtual_field": "aspect_ratio",
+      "value": "16:9"
+    },
+    "expected": {
+      "param": "size",
+      "value": "2560x1440"
+    }
+  },
+  {
+    "group": "virtual_param_resolution",
+    "model": "SeeDream 4.5",
+    "task_type": "text_to_image",
+    "version_id": "doubao-seedream-4-5-251128",
+    "input": {
+      "virtual_field": "aspect_ratio",
+      "value": "9:16"
+    },
+    "expected": {
+      "param": "size",
+      "value": "1440x2560"
+    }
+  },
+  {
+    "group": "virtual_param_resolution",
+    "model": "SeeDream 4.5",
+    "task_type": "text_to_image",
+    "version_id": "doubao-seedream-4-5-251128",
+    "input": {
+      "virtual_field": "aspect_ratio",
+      "value": "1:1"
+    },
+    "expected": {
+      "param": "size",
+      "value": "2048x2048"
+    }
+  },
+  {
+    "group": "virtual_param_resolution",
+    "model": "SeeDream 4.5",
+    "task_type": "text_to_image",
+    "version_id": "doubao-seedream-4-5-251128",
+    "input": {
+      "virtual_field": "aspect_ratio",
+      "value": "4:3"
+    },
+    "expected": {
+      "param": "size",
+      "value": "2304x1728"
+    }
+  },
+  {
+    "group": "virtual_param_resolution",
+    "model": "SeeDream 4.5",
+    "task_type": "text_to_image",
+    "version_id": "doubao-seedream-4-5-251128",
+    "input": {
+      "virtual_field": "aspect_ratio",
+      "value": "4k"
+    },
+    "expected": {
+      "param": "size",
+      "value": "4k"
+    }
+  },
+  {
+    "group": "virtual_param_resolution",
+    "model": "SeeDream 4.5",
+    "task_type": "text_to_image",
+    "version_id": "doubao-seedream-4-5-251128",
+    "input": {
+      "virtual_field": "aspect_ratio",
+      "value": "2k"
+    },
+    "expected": {
+      "param": "size",
+      "value": "2k"
+    }
+  },
+  {
+    "group": "virtual_param_resolution",
+    "model": "SeeDream 4.5",
+    "task_type": "text_to_image",
+    "version_id": "doubao-seedream-4-5-251128",
+    "input": {
+      "virtual_field": "aspect_ratio",
+      "value": "21:9"
+    },
+    "expected": {
+      "param": "size",
+      "value": "3024x1296"
+    }
+  },
+  {
+    "group": "virtual_param_resolution",
+    "model": "Seedance 2.0",
+    "task_type": "text_to_video",
+    "version_id": "ima-pro",
+    "input": {
+      "virtual_field": "aspect_ratio",
+      "value": "adaptive"
+    },
+    "expected": {
+      "param": "aspect_ratio",
+      "value": "auto"
+    }
+  },
+  {
+    "group": "virtual_param_resolution",
+    "model": "Seedance 2.0",
+    "task_type": "text_to_video",
+    "version_id": "ima-pro",
+    "input": {
+      "virtual_field": "aspect_ratio",
+      "value": "16:9"
+    },
+    "expected": {
+      "param": "aspect_ratio",
+      "value": "16:9"
+    }
+  },
+  {
+    "group": "virtual_param_resolution",
+    "model": "Seedance 2.0",
+    "task_type": "text_to_video",
+    "version_id": "ima-pro",
+    "input": {
+      "virtual_field": "aspect_ratio",
+      "value": "9:16"
+    },
+    "expected": {
+      "param": "aspect_ratio",
+      "value": "9:16"
+    }
+  },
+  {
+    "group": "virtual_param_resolution",
+    "model": "Kling O1",
+    "task_type": "text_to_video",
+    "version_id": "kling-video-o1",
+    "input": {
+      "virtual_field": "quality",
+      "value": "720p"
+    },
+    "expected": {
+      "param": "mode",
+      "value": "std"
+    }
+  },
+  {
+    "group": "virtual_param_resolution",
+    "model": "Kling O1",
+    "task_type": "text_to_video",
+    "version_id": "kling-video-o1",
+    "input": {
+      "virtual_field": "quality",
+      "value": "1080p"
+    },
+    "expected": {
+      "param": "mode",
+      "value": "pro"
+    }
+  },
+  {
+    "group": "virtual_param_resolution",
+    "model": "Kling 2.6",
+    "task_type": "text_to_video",
+    "version_id": "kling-v2-6",
+    "input": {
+      "virtual_field": "quality",
+      "value": "1080p"
+    },
+    "expected": {
+      "param": "mode",
+      "value": "pro"
+    }
+  },
+  {
+    "group": "credit_rule_selection",
+    "model_id": "doubao-seedream-4.5",
+    "task_type": "text_to_image",
+    "version_id": "doubao-seedream-4-5-251128",
+    "user_params": {},
+    "expected": {
+      "attribute_id": 2341,
+      "points": 5
+    }
+  },
+  {
+    "group": "credit_rule_selection",
+    "model_id": "gemini-3.1-flash-image",
+    "task_type": "text_to_image",
+    "version_id": "gemini-3.1-flash-image-preview",
+    "user_params": {
+      "size": "512px"
+    },
+    "expected": {
+      "attribute_id": 4400,
+      "points": 4
+    }
+  },
+  {
+    "group": "credit_rule_selection",
+    "model_id": "gemini-3.1-flash-image",
+    "task_type": "text_to_image",
+    "version_id": "gemini-3.1-flash-image-preview",
+    "user_params": {
+      "size": "1K"
+    },
+    "expected": {
+      "attribute_id": 4401,
+      "points": 6
+    }
+  },
+  {
+    "group": "credit_rule_selection",
+    "model_id": "gemini-3.1-flash-image",
+    "task_type": "text_to_image",
+    "version_id": "gemini-3.1-flash-image-preview",
+    "user_params": {
+      "size": "2K"
+    },
+    "expected": {
+      "attribute_id": 4402,
+      "points": 10
+    }
+  },
+  {
+    "group": "credit_rule_selection",
+    "model_id": "gemini-3.1-flash-image",
+    "task_type": "text_to_image",
+    "version_id": "gemini-3.1-flash-image-preview",
+    "user_params": {
+      "size": "4K"
+    },
+    "expected": {
+      "attribute_id": 4403,
+      "points": 13
+    }
+  },
+  {
+    "group": "credit_rule_selection",
+    "model_id": "gemini-3.1-flash-image",
+    "task_type": "text_to_image",
+    "version_id": "gemini-3.1-flash-image-preview",
+    "user_params": {
+      "size": "1k"
+    },
+    "expected": {
+      "attribute_id": 4401,
+      "points": 6
+    }
+  },
+  {
+    "group": "credit_rule_selection",
+    "model_id": "gemini-3-pro-image",
+    "task_type": "text_to_image",
+    "version_id": "gemini-3-pro-image-preview",
+    "user_params": {
+      "size": "1K"
+    },
+    "expected": {
+      "attribute_id": 2399,
+      "points": 10
+    }
+  },
+  {
+    "group": "credit_rule_selection",
+    "model_id": "gemini-3-pro-image",
+    "task_type": "text_to_image",
+    "version_id": "gemini-3-pro-image-preview",
+    "user_params": {
+      "size": "4K"
+    },
+    "expected": {
+      "attribute_id": 2401,
+      "points": 18
+    }
+  },
+  {
+    "group": "credit_rule_selection",
+    "model_id": "gemini-3.1-flash-image",
+    "task_type": "image_to_image",
+    "version_id": "gemini-3.1-flash-image-preview",
+    "user_params": {
+      "size": "4K"
+    },
+    "expected": {
+      "attribute_id": 4407,
+      "points": 13
+    }
+  },
+  {
+    "group": "credit_rule_selection",
+    "model_id": "doubao-seedance-1.5-pro",
+    "task_type": "text_to_video",
+    "version_id": "doubao-seedance-1-5-pro-251215",
+    "user_params": {
+      "duration": "5",
+      "resolution": "480p"
+    },
+    "expected": {
+      "attribute_id": 2083,
+      "points": 16
+    }
+  },
+  {
+    "group": "credit_rule_selection",
+    "model_id": "doubao-seedance-1.5-pro",
+    "task_type": "text_to_video",
+    "version_id": "doubao-seedance-1-5-pro-251215",
+    "user_params": {
+      "duration": "5",
+      "resolution": "1080p"
+    },
+    "expected": {
+      "attribute_id": 2083,
+      "points": 16
+    }
+  },
+  {
+    "group": "credit_rule_selection",
+    "model_id": "doubao-seedance-1.5-pro",
+    "task_type": "text_to_video",
+    "version_id": "doubao-seedance-1-5-pro-251215",
+    "user_params": {
+      "duration": "10"
+    },
+    "expected": {
+      "attribute_id": 2083,
+      "points": 16
+    }
+  },
+  {
+    "group": "credit_rule_selection",
+    "model_id": "doubao-seedance-1.5-pro",
+    "task_type": "text_to_video",
+    "version_id": "doubao-seedance-1-5-pro-251215",
+    "user_params": {},
+    "expected": {
+      "attribute_id": 2083,
+      "points": 16
+    }
+  },
+  {
+    "group": "form_config_defaults",
+    "model_id": "doubao-seedream-4.5",
+    "task_type": "text_to_image",
+    "version_id": "doubao-seedream-4-5-251128",
+    "expected_form_params": {
+      "size": "4k"
+    },
+    "expected_attribute_id": 2341,
+    "expected_credit": 5
+  },
+  {
+    "group": "form_config_defaults",
+    "model_id": "gemini-3.1-flash-image",
+    "task_type": "text_to_image",
+    "version_id": "gemini-3.1-flash-image-preview",
+    "expected_form_params": {
+      "aspect_ratio": "1:1",
+      "size": "1K"
+    },
+    "expected_attribute_id": 4401,
+    "expected_credit": 6
+  },
+  {
+    "group": "form_config_defaults",
+    "model_id": "gemini-3-pro-image",
+    "task_type": "text_to_image",
+    "version_id": "gemini-3-pro-image-preview",
+    "expected_form_params": {
+      "aspect_ratio": "1:1",
+      "size": "1K"
+    },
+    "expected_attribute_id": 2399,
+    "expected_credit": 10
+  },
+  {
+    "group": "form_config_defaults",
+    "model_id": "midjourney",
+    "task_type": "text_to_image",
+    "version_id": "midjourney",
+    "expected_form_params": {
+      "n": "1",
+      "resolution": "480p"
+    },
+    "expected_attribute_id": 4390,
+    "expected_credit": 8
+  },
+  {
+    "group": "form_config_defaults",
+    "model_id": "ima-pro",
+    "task_type": "text_to_video",
+    "version_id": "ima-pro",
+    "expected_form_params": {
+      "audio": true,
+      "duration": 5,
+      "aspect_ratio": "1:1",
+      "resolution": "720p"
+    },
+    "expected_attribute_id": 4511,
+    "expected_credit": 105
+  },
+  {
+    "group": "form_config_defaults",
+    "model_id": "kling-video-o1",
+    "task_type": "text_to_video",
+    "version_id": "kling-video-o1",
+    "expected_form_params": {
+      "duration": "5",
+      "aspect_ratio": "16:9",
+      "mode": "std"
+    },
+    "expected_attribute_id": 2313,
+    "expected_credit": 48
+  },
+  {
+    "group": "form_config_defaults",
+    "model_id": "kling-v2-6",
+    "task_type": "text_to_video",
+    "version_id": "kling-v2-6",
+    "expected_form_params": {
+      "duration": "5",
+      "aspect_ratio": "16:9",
+      "mode": "pro",
+      "sound": "off"
+    },
+    "expected_attribute_id": 2330,
+    "expected_credit": 40
+  },
+  {
+    "group": "form_config_defaults",
+    "model_id": "sonic",
+    "task_type": "text_to_music",
+    "version_id": "sonic",
+    "expected_form_params": {
+      "make_instrumental": false,
+      "auto_lyrics": false,
+      "custom_mode": true,
+      "model_version": "sonic-v4",
+      "n": "1"
+    },
+    "expected_attribute_id": 2370,
+    "expected_credit": 25
+  },
+  {
+    "group": "form_config_defaults",
+    "model_id": "seed-tts-2.0",
+    "task_type": "text_to_speech",
+    "version_id": "seed-tts-2.0",
+    "expected_form_params": {
+      "model": "seed-tts-2.0-expressive"
+    },
+    "expected_attribute_id": 4419,
+    "expected_credit": 2
+  },
+  {
+    "group": "full_param_merge",
+    "model_id": "doubao-seedream-4.5",
+    "task_type": "text_to_image",
+    "version_id": "doubao-seedream-4-5-251128",
+    "extra_params": {
+      "aspect_ratio": "16:9"
+    },
+    "expected_inner_contains": {
+      "size": "2560x1440"
+    },
+    "actual_inner": {
+      "size": "4k",
+      "default": "enabled",
+      "aspect_ratio": "16:9"
+    }
+  },
+  {
+    "group": "full_param_merge",
+    "model_id": "doubao-seedream-4.5",
+    "task_type": "text_to_image",
+    "version_id": "doubao-seedream-4-5-251128",
+    "extra_params": {},
+    "expected_inner_contains": {
+      "size": "4k"
+    },
+    "actual_inner": {
+      "size": "4k",
+      "default": "enabled"
+    }
+  },
+  {
+    "group": "full_param_merge",
+    "model_id": "gemini-3.1-flash-image",
+    "task_type": "text_to_image",
+    "version_id": "gemini-3.1-flash-image-preview",
+    "extra_params": {
+      "size": "4K"
+    },
+    "expected_inner_contains": {
+      "size": "4K"
+    },
+    "actual_inner": {
+      "aspect_ratio": "1:1",
+      "size": "4K"
+    }
+  },
+  {
+    "group": "full_param_merge",
+    "model_id": "gemini-3.1-flash-image",
+    "task_type": "text_to_image",
+    "version_id": "gemini-3.1-flash-image-preview",
+    "extra_params": {
+      "size": "1k"
+    },
+    "expected_inner_contains": {
+      "size": "1K"
+    },
+    "actual_inner": {
+      "aspect_ratio": "1:1",
+      "size": "1K"
+    }
+  },
+  {
+    "group": "full_param_merge",
+    "model_id": "kling-video-o1",
+    "task_type": "text_to_video",
+    "version_id": "kling-video-o1",
+    "extra_params": {
+      "quality": "1080p"
+    },
+    "expected_inner_contains": {
+      "mode": "pro"
+    },
+    "actual_inner": {
+      "duration": "5",
+      "aspect_ratio": "16:9",
+      "mode": "std",
+      "quality": "1080p"
+    }
+  },
+  {
+    "group": "full_param_merge",
+    "model_id": "ima-pro",
+    "task_type": "text_to_video",
+    "version_id": "ima-pro",
+    "extra_params": {
+      "aspect_ratio": "adaptive"
+    },
+    "expected_inner_contains": {
+      "aspect_ratio": "auto"
+    },
+    "actual_inner": {
+      "audio": true,
+      "duration": 5,
+      "aspect_ratio": "adaptive",
+      "resolution": "720p"
+    }
+  }
+]
