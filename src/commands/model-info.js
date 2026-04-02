@@ -4,6 +4,21 @@ const { requireApiKey, getBaseUrl } = require('../config');
 const { bold, cyan, dim, green, yellow, table: printTable, spinner, handleError } = require('../output');
 const { fetchProducts, findModel } = require('./list-models');
 
+/**
+ * Common input requirements by task type.
+ * These are always needed but not in form_config.
+ */
+const TASK_INPUTS = {
+  text_to_image:             { prompt: 'required', images: null },
+  image_to_image:            { prompt: 'required', images: '1+ images' },
+  text_to_video:             { prompt: 'required', images: null },
+  image_to_video:            { prompt: 'required', images: '1 image (first frame)' },
+  first_last_frame_to_video: { prompt: 'required', images: '2 images (first + last frame)' },
+  reference_image_to_video:  { prompt: 'required', images: '1+ images (visual reference)' },
+  text_to_music:             { prompt: 'required (description or lyrics)', images: null },
+  text_to_speech:            { prompt: 'required (text to speak)', images: null },
+};
+
 module.exports = function registerModelInfo(program) {
   program
     .command('model-info')
@@ -30,12 +45,33 @@ module.exports = function registerModelInfo(program) {
         }
 
         if (rootOpts.json) {
-          console.log(JSON.stringify(model, null, 2));
+          // Inject common inputs into JSON output too
+          const inputs = TASK_INPUTS[opts.taskType] || { prompt: 'required', images: null };
+          const enriched = { ...model, common_inputs: inputs };
+          console.log(JSON.stringify(enriched, null, 2));
           return;
         }
 
         console.log(`\n${bold(model.name)} ${dim(`(${model.id})`)}\n`);
         console.log(`  Task Type:   ${opts.taskType}`);
+
+        // Common inputs (prompt + input files)
+        const inputs = TASK_INPUTS[opts.taskType] || { prompt: 'required', images: null };
+        console.log(`\n  ${bold('Inputs:')}`);
+        console.log(`    ${cyan('prompt')}:       ${inputs.prompt}`);
+        if (inputs.images) {
+          console.log(`    ${cyan('input_images')}: ${inputs.images}`);
+        }
+
+        // Model-specific parameters from form_config
+        const formConfig = model.form_config || [];
+        if (formConfig.length) {
+          console.log(`\n  ${bold('Model Parameters:')}`);
+          for (const f of formConfig) {
+            const options = (f.options || []).map((o) => o.value || o.label).join(', ');
+            console.log(`    ${cyan(f.field)}: ${f.value || '—'}${options ? dim(` [${options}]`) : ''}`);
+          }
+        }
 
         // Credit rules
         const rules = model.credit_rules || [];
@@ -52,16 +88,6 @@ module.exports = function registerModelInfo(program) {
             }),
             null
           );
-        }
-
-        // Form config (default params)
-        const formConfig = model.form_config || [];
-        if (formConfig.length) {
-          console.log(`\n  ${bold('Parameters:')}`);
-          for (const f of formConfig) {
-            const options = (f.options || []).map((o) => o.value || o.label).join(', ');
-            console.log(`    ${cyan(f.field)}: ${f.value || '—'}${options ? dim(` [${options}]`) : ''}`);
-          }
         }
 
         console.log();
