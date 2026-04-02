@@ -5,7 +5,8 @@ const { ImaClient } = require('../api');
 const { bold, cyan, dim, green, yellow, table: printTable, spinner, handleError } = require('../output');
 
 /**
- * Flatten V2 product tree into leaf nodes (type=3)
+ * Flatten V2 product tree into leaf nodes (type=3).
+ * Each leaf's `id` field is the version_id — the true unique identifier.
  */
 function flattenProducts(tree) {
   const leaves = [];
@@ -24,11 +25,51 @@ function flattenProducts(tree) {
   return leaves;
 }
 
+/**
+ * Fetch products for a task type (with caching).
+ */
+async function fetchProducts(taskType, apiKey, baseUrl, useCache = true) {
+  const cacheKey = `products_${taskType}`;
+  if (useCache) {
+    const cached = readCache(cacheKey);
+    if (cached) return { products: cached, fromCache: true };
+  }
+
+  const client = new ImaClient(apiKey, baseUrl);
+  const tree = await client.listProducts(taskType);
+  const products = flattenProducts(tree);
+  writeCache(cacheKey, products);
+  return { products, fromCache: false };
+}
+
+/**
+ * Find a model by --model value.
+ * The user-facing identifier is version_id (the `id` field in product data).
+ */
+function findModel(products, modelValue) {
+  if (!modelValue) return null;
+  const lower = modelValue.toLowerCase();
+
+  // Exact match on version_id (primary)
+  let match = products.find((p) => p.id === modelValue);
+  if (match) return match;
+
+  // Case-insensitive match on version_id
+  match = products.find((p) => p.id.toLowerCase() === lower);
+  if (match) return match;
+
+  // Case-insensitive match on name (convenience)
+  match = products.find((p) => (p.name || '').toLowerCase() === lower);
+  if (match) return match;
+
+  return null;
+}
+
 module.exports = function registerListModels(program) {
   program
     .command('list-models')
     .description('List available models for a task type')
-    .argument('<task-type>', 'Task type (e.g., text_to_image, image_to_image)')
+    .argument('<task-type>', 'Task type (e.g., text_to_image, text_to_video)')
     .option('--no-cache', 'Skip cache and fetch fresh data')
     .action(async (taskType, opts, cmd) => {
       const rootOpts = cmd.optsWithGlobals();
@@ -37,18 +78,9 @@ module.exports = function registerListModels(program) {
         const apiKey = requireApiKey(rootOpts);
         const baseUrl = getBaseUrl(rootOpts);
 
-        // Check cache (1 hour TTL)
-        const cacheKey = `products_${taskType}`;
-        let products = opts.cache !== false ? readCache(cacheKey) : null;
-
-        if (!products) {
-          const spin = spinner(`Fetching models for ${taskType}...`);
-          const client = new ImaClient(apiKey, baseUrl);
-          const tree = await client.listProducts(taskType);
-          products = flattenProducts(tree);
-          writeCache(cacheKey, products);
-          spin.stop(`${green('✓')} Found ${products.length} models`);
-        }
+        const spin = spinner(`Fetching models for ${taskType}...`);
+        const { products, fromCache } = await fetchProducts(taskType, apiKey, baseUrl, opts.cache !== false);
+        spin.stop(fromCache ? null : `${green('✓')} Found ${products.length} models`);
 
         if (rootOpts.json) {
           console.log(JSON.stringify(products, null, 2));
@@ -65,22 +97,17 @@ module.exports = function registerListModels(program) {
 
         const rows = products.map((p) => {
           const rules = p.credit_rules || [];
-          const costs = rules.map((r) => `${r.points}pts`).join('/');
-          const sizes = rules.map((r) => {
-            const attrs = r.attributes || {};
-            return attrs.size || attrs.resolution || 'default';
-          }).join('/');
+          const costs = [...new Set(rules.map((r) => `${r.points}`))].join('/') + ' pts';
 
           return [
-            cyan(p.model_id || ''),
+            cyan(p.id || ''),
             p.name || '',
             costs || dim('—'),
-            dim(p.id || ''),
           ];
         });
 
-        printTable(rows, [bold('Model ID'), bold('Name'), bold('Cost'), bold('Version ID')]);
-        console.log(`\n${dim(`Use ${cyan('ima model-info <model-id> --task-type ' + taskType)} for details.`)}\n`);
+        printTable(rows, [bold('Model'), bold('Name'), bold('Cost')]);
+        console.log(`\n${dim(`Use ${cyan('ima model-info <model> --task-type ' + taskType)} for details.`)}\n`);
       } catch (err) {
         handleError(err);
       }
@@ -88,3 +115,5 @@ module.exports = function registerListModels(program) {
 };
 
 module.exports.flattenProducts = flattenProducts;
+module.exports.fetchProducts = fetchProducts;
+module.exports.findModel = findModel;

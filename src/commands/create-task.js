@@ -2,19 +2,19 @@
 
 const fs = require('fs');
 const path = require('path');
-const { requireApiKey, getBaseUrl, readCache, writeCache } = require('../config');
+const { requireApiKey, getBaseUrl } = require('../config');
 const { ImaClient, uploadToOss } = require('../api');
 const { bold, cyan, dim, green, yellow, red, spinner, handleError } = require('../output');
-const { flattenProducts } = require('./list-models');
+const { fetchProducts, findModel } = require('./list-models');
 
 module.exports = function registerCreateTask(program) {
   program
     .command('create-task')
     .description('Create an AI generation task')
     .requiredOption('--task-type <type>', 'Task type (text_to_image, image_to_image, etc.)')
-    .requiredOption('--model-id <id>', 'Model ID (use "ima list-models" to find)')
+    .requiredOption('--model <model>', 'Model (version_id or name from "ima list-models")')
     .requiredOption('--prompt <text>', 'Generation prompt')
-    .option('--input-images <paths...>', 'Input image(s) — local paths or URLs (for i2i tasks)')
+    .option('--input-images <paths...>', 'Input image(s) — local paths or URLs')
     .option('--size <size>', 'Output size (e.g., 1K, 2K, 4K, 512px)')
     .option('--aspect-ratio <ratio>', 'Aspect ratio (e.g., 16:9, 9:16, 4:3)')
     .option('--n <count>', 'Number of outputs (default: 1)', '1')
@@ -31,19 +31,13 @@ module.exports = function registerCreateTask(program) {
         const client = new ImaClient(apiKey, baseUrl);
 
         // 1. Fetch product info
-        const cacheKey = `products_${opts.taskType}`;
-        let products = readCache(cacheKey);
-        if (!products) {
-          const spin = spinner('Fetching product info...');
-          const tree = await client.listProducts(opts.taskType);
-          products = flattenProducts(tree);
-          writeCache(cacheKey, products);
-          spin.stop();
-        }
+        const spin1 = spinner('Fetching product info...');
+        const { products } = await fetchProducts(opts.taskType, apiKey, baseUrl);
+        spin1.stop();
 
-        const model = products.find((p) => p.model_id === opts.modelId);
+        const model = findModel(products, opts.model);
         if (!model) {
-          console.error(`${red('✗')} Model "${opts.modelId}" not found for ${opts.taskType}.`);
+          console.error(`${red('✗')} Model "${opts.model}" not found for ${opts.taskType}.`);
           console.error(`Run: ${cyan(`ima list-models ${opts.taskType}`)}`);
           process.exit(1);
         }
@@ -113,7 +107,7 @@ module.exports = function registerCreateTask(program) {
         if (opts.size) nestedParams.size = opts.size;
         if (opts.aspectRatio) nestedParams.aspect_ratio = opts.aspectRatio;
 
-        // 6. Create task
+        // 6. Create task — model_id, model_name, model_version filled internally
         const payload = {
           task_type: opts.taskType,
           enable_multi_model: false,
@@ -121,9 +115,9 @@ module.exports = function registerCreateTask(program) {
           parameters: [
             {
               attribute_id: rule.attribute_id,
-              model_id: model.model_id,
-              model_name: model.name,
-              model_version: model.id,
+              model_id: model.model_id,       // internal, not user-facing
+              model_name: model.name,          // internal, not user-facing
+              model_version: model.id,         // version_id = the user-facing --model value
               app: 'ima',
               platform: 'web',
               category: opts.taskType,
@@ -139,13 +133,13 @@ module.exports = function registerCreateTask(program) {
         spin2.stop(`${green('✓')} Task created: ${cyan(taskId)}`);
 
         if (rootOpts.json && !opts.wait) {
-          console.log(JSON.stringify({ task_id: taskId, model: model.name, credit: rule.points }));
+          console.log(JSON.stringify({ task_id: taskId, model: model.name, model_version: model.id, credit: rule.points }));
           return;
         }
 
         if (!opts.wait) {
           console.log(`\n  Task ID:  ${cyan(taskId)}`);
-          console.log(`  Model:   ${model.name}`);
+          console.log(`  Model:   ${model.name} ${dim(`(${model.id})`)}`);
           console.log(`  Cost:    ${rule.points} pts`);
           console.log(`\n  Check status: ${cyan(`ima task-status ${taskId}`)}`);
           if (!rootOpts.json) console.log(`  Or wait:      ${cyan(`ima create-task ... --wait`)}\n`);
@@ -182,6 +176,7 @@ module.exports = function registerCreateTask(program) {
               console.log(JSON.stringify({
                 task_id: taskId,
                 model: model.name,
+                model_version: model.id,
                 credit: rule.points,
                 elapsed_seconds: elapsed,
                 results: medias.map((m) => ({ url: m.url, width: m.width, height: m.height, format: m.format })),
