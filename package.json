@@ -7,7 +7,7 @@
     "ima": "bin/ima.js"
   },
   "scripts": {
-    "test": "node --test test/",
+    "test": "node --test test/*.js",
     "lint": "eslint src/"
   },
   "keywords": [
