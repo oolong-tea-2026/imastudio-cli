@@ -1,6 +1,6 @@
 {
   "name": "imastudio-cli",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "IMA Studio CLI - Command-line tool for IMA Studio AI content generation platform",
   "main": "src/index.js",
   "bin": {
