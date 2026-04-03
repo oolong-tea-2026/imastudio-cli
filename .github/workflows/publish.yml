@@ -18,9 +18,17 @@ jobs:
         with:
           node-version: '24'
 
-      - run: npm --version
-
       - run: npm ci
+
+      - name: Populate model cache for tests
+        run: |
+          node bin/ima.js list-models text_to_image
+          node bin/ima.js list-models image_to_image
+          node bin/ima.js list-models text_to_video
+          node bin/ima.js list-models text_to_music
+          node bin/ima.js list-models text_to_speech
+        env:
+          IMA_API_KEY: ${{ secrets.IMA_API_KEY }}
 
       - run: npm test
 
