@@ -1,0 +1,624 @@
+[
+  {
+    "id": "gemini-3.1-flash-image-preview",
+    "parent_id": "Nano Banana",
+    "type": "3",
+    "name": "Nano Banana 2",
+    "icon": "https://ima.esxscloud.com/ima/images2/nano-2.png",
+    "model_id": "gemini-3.1-flash-image",
+    "tags": [
+      {
+        "tag_type": "feature",
+        "tag_value": "NEW🔥"
+      },
+      {
+        "tag_type": "feature",
+        "tag_value": "Fast"
+      },
+      {
+        "tag_type": "EET",
+        "tag_value": "20~35s"
+      },
+      {
+        "tag_type": "point",
+        "tag_value": "4~13"
+      }
+    ],
+    "model_types": [
+      "text_to_image",
+      "image_to_image"
+    ],
+    "description": "Pro-grade quality × Flash-level speed",
+    "category_code": "image_to_image",
+    "category_name": "图生图",
+    "form_config": [
+      {
+        "type": "tags",
+        "field": "aspect_ratio",
+        "label": "Aspect Ratio",
+        "description": "Aspect ratio (same as aspect_ratio) controlling frame proportion",
+        "value": "1:1",
+        "options": [
+          {
+            "label": "1:1",
+            "value": "1:1"
+          },
+          {
+            "label": "1:4",
+            "value": "1:4"
+          },
+          {
+            "label": "1:8",
+            "value": "1:8"
+          },
+          {
+            "label": "2:3",
+            "value": "2:3"
+          },
+          {
+            "label": "3:2",
+            "value": "3:2"
+          },
+          {
+            "label": "3:4",
+            "value": "3:4"
+          },
+          {
+            "label": "4:1",
+            "value": "4:1"
+          },
+          {
+            "label": "4:3",
+            "value": "4:3"
+          },
+          {
+            "label": "4:5",
+            "value": "4:5"
+          },
+          {
+            "label": "5:4",
+            "value": "5:4"
+          },
+          {
+            "label": "8:1",
+            "value": "8:1"
+          },
+          {
+            "label": "9:16",
+            "value": "9:16"
+          },
+          {
+            "label": "16:9",
+            "value": "16:9"
+          },
+          {
+            "label": "21:9",
+            "value": "21:9"
+          }
+        ],
+        "level": 1
+      },
+      {
+        "type": "tags",
+        "field": "size",
+        "label": "Quality",
+        "description": "Image size (same as size) specifying dim",
+        "value": "1K",
+        "options": [
+          {
+            "label": "512px",
+            "value": "512px"
+          },
+          {
+            "label": "1K",
+            "value": "1K"
+          },
+          {
+            "label": "2K",
+            "value": "2K"
+          },
+          {
+            "label": "4K",
+            "value": "4K"
+          }
+        ],
+        "level": 1
+      }
+    ],
+    "files": {
+      "component": "card",
+      "acceptType": [
+        "image/jpg,png"
+      ],
+      "category": "image_to_image",
+      "minLimit": 1,
+      "maxLimit": 14
+    },
+    "credit_rules": [
+      {
+        "origin_point": 4,
+        "points": 4,
+        "attribute_id": 4404,
+        "attributes": {
+          "size": "512px"
+        }
+      },
+      {
+        "origin_point": 6,
+        "points": 6,
+        "attribute_id": 4405,
+        "attributes": {
+          "size": "1K"
+        }
+      },
+      {
+        "origin_point": 10,
+        "points": 10,
+        "attribute_id": 4406,
+        "attributes": {
+          "size": "2K"
+        }
+      },
+      {
+        "origin_point": 13,
+        "points": 13,
+        "attribute_id": 4407,
+        "attributes": {
+          "size": "4K"
+        }
+      }
+    ],
+    "group_name": "Nano Banana"
+  },
+  {
+    "id": "gemini-3-pro-image-preview",
+    "parent_id": "Nano Banana",
+    "type": "3",
+    "name": "Nano Banana Pro",
+    "icon": "https://ima.esxscloud.com/ima/images2/nano-2.png",
+    "model_id": "gemini-3-pro-image",
+    "tags": [
+      {
+        "tag_type": "feature",
+        "tag_value": "SOTA"
+      },
+      {
+        "tag_type": "EET",
+        "tag_value": "25~45s"
+      },
+      {
+        "tag_type": "point",
+        "tag_value": "10~18"
+      }
+    ],
+    "model_types": [
+      "text_to_image",
+      "image_to_image"
+    ],
+    "description": "The best image generation model on the market",
+    "category_code": "image_to_image",
+    "category_name": "图生图",
+    "form_config": [
+      {
+        "type": "tags",
+        "field": "aspect_ratio",
+        "label": "Aspect Ratio",
+        "description": "Aspect ratio (same as aspect_ratio) controlling frame proportion",
+        "value": "1:1",
+        "options": [
+          {
+            "label": "1:1",
+            "value": "1:1"
+          },
+          {
+            "label": "3:2",
+            "value": "3:2"
+          },
+          {
+            "label": "2:3",
+            "value": "2:3"
+          },
+          {
+            "label": "3:4",
+            "value": "3:4"
+          },
+          {
+            "label": "4:3",
+            "value": "4:3"
+          },
+          {
+            "label": "4:5",
+            "value": "4:5"
+          },
+          {
+            "label": "5:4",
+            "value": "5:4"
+          },
+          {
+            "label": "9:16",
+            "value": "9:16"
+          },
+          {
+            "label": "16:9",
+            "value": "16:9"
+          },
+          {
+            "label": "21:9",
+            "value": "21:9"
+          }
+        ],
+        "level": 1
+      },
+      {
+        "type": "tags",
+        "field": "size",
+        "label": "Quality",
+        "description": "Image size (same as size) specifying dim",
+        "value": "1K",
+        "options": [
+          {
+            "label": "1K",
+            "value": "1K"
+          },
+          {
+            "label": "2K",
+            "value": "2K"
+          },
+          {
+            "label": "4K",
+            "value": "4K"
+          }
+        ],
+        "level": 1
+      }
+    ],
+    "files": {
+      "component": "card",
+      "acceptType": [
+        "image/jpg,png"
+      ],
+      "category": "image_to_image",
+      "minLimit": 1,
+      "maxLimit": 14
+    },
+    "credit_rules": [
+      {
+        "origin_point": 10,
+        "points": 10,
+        "attribute_id": 2402,
+        "attributes": {
+          "size": "1K"
+        }
+      },
+      {
+        "origin_point": 10,
+        "points": 10,
+        "attribute_id": 2403,
+        "attributes": {
+          "size": "2K"
+        }
+      },
+      {
+        "origin_point": 18,
+        "points": 18,
+        "attribute_id": 2404,
+        "attributes": {
+          "size": "4K"
+        }
+      }
+    ],
+    "group_name": "Nano Banana"
+  },
+  {
+    "id": "doubao-seedream-4-5-251128",
+    "parent_id": "SeeDream",
+    "type": "3",
+    "name": "SeeDream 4.5",
+    "icon": "https://ima.esxscloud.com/ima/images2/doubao-2.png",
+    "model_id": "doubao-seedream-4.5",
+    "tags": [
+      {
+        "tag_type": "feature",
+        "tag_value": "❤️NEW"
+      },
+      {
+        "tag_type": "EET",
+        "tag_value": "20~40s"
+      },
+      {
+        "tag_type": "point",
+        "tag_value": "5"
+      }
+    ],
+    "model_types": [
+      "text_to_image",
+      "image_to_image"
+    ],
+    "description": "Stronger subject consistency and text rendering capabilities",
+    "category_code": "image_to_image",
+    "category_name": "图生图",
+    "form_config": [
+      {
+        "type": "tags",
+        "field": "size",
+        "label": "Size",
+        "description": "When selecting 2K or 4K",
+        "value": "4k",
+        "options": [
+          {
+            "label": "2k",
+            "value": "2k"
+          },
+          {
+            "label": "4k",
+            "value": "4k"
+          },
+          {
+            "label": "2048x2048",
+            "value": "2048x2048"
+          },
+          {
+            "label": "2304x1728",
+            "value": "2304x1728"
+          },
+          {
+            "label": "1728x2304",
+            "value": "1728x2304"
+          },
+          {
+            "label": "2560x1440",
+            "value": "2560x1440"
+          },
+          {
+            "label": "1440x2560",
+            "value": "1440x2560"
+          },
+          {
+            "label": "2496x1664",
+            "value": "2496x1664"
+          },
+          {
+            "label": "1664x2496",
+            "value": "1664x2496"
+          },
+          {
+            "label": "3024x1296",
+            "value": "3024x1296"
+          }
+        ],
+        "is_ui_virtual": true,
+        "ui_params": [
+          {
+            "config": {
+              "type": "string"
+            },
+            "description": "When selecting 2K or 4K, please enter the aspect ratio in the prompt box.",
+            "field": "aspect_ratio",
+            "label": "Aspect Ratio",
+            "level": 1,
+            "options": [
+              {
+                "label": "2k",
+                "value": "2k"
+              },
+              {
+                "label": "4k",
+                "value": "4k"
+              },
+              {
+                "label": "1:1",
+                "value": "1:1"
+              },
+              {
+                "label": "2:3",
+                "value": "2:3"
+              },
+              {
+                "label": "3:2",
+                "value": "3:2"
+              },
+              {
+                "label": "3:4",
+                "value": "3:4"
+              },
+              {
+                "label": "4:3",
+                "value": "4:3"
+              },
+              {
+                "label": "9:16",
+                "value": "9:16"
+              },
+              {
+                "label": "16:9",
+                "value": "16:9"
+              },
+              {
+                "label": "21:9",
+                "value": "21:9"
+              }
+            ],
+            "required": true,
+            "type": "tags",
+            "value": "4k"
+          }
+        ],
+        "value_mapping": {
+          "mapping_rules": [
+            {
+              "source_values": {
+                "aspect_ratio": "1:1"
+              },
+              "target_value": "2048x2048"
+            },
+            {
+              "source_values": {
+                "aspect_ratio": "2:3"
+              },
+              "target_value": "1664x2496"
+            },
+            {
+              "source_values": {
+                "aspect_ratio": "3:2"
+              },
+              "target_value": "2496x1664"
+            },
+            {
+              "source_values": {
+                "aspect_ratio": "3:4"
+              },
+              "target_value": "1728x2304"
+            },
+            {
+              "source_values": {
+                "aspect_ratio": "4:3"
+              },
+              "target_value": "2304x1728"
+            },
+            {
+              "source_values": {
+                "aspect_ratio": "9:16"
+              },
+              "target_value": "1440x2560"
+            },
+            {
+              "source_values": {
+                "aspect_ratio": "16:9"
+              },
+              "target_value": "2560x1440"
+            },
+            {
+              "source_values": {
+                "aspect_ratio": "21:9"
+              },
+              "target_value": "3024x1296"
+            },
+            {
+              "source_values": {
+                "aspect_ratio": "2k"
+              },
+              "target_value": "2k"
+            },
+            {
+              "source_values": {
+                "aspect_ratio": "4k"
+              },
+              "target_value": "4k"
+            }
+          ],
+          "source_params": [
+            "aspect_ratio"
+          ],
+          "target_param": "size",
+          "type": "simple"
+        },
+        "level": 1
+      }
+    ],
+    "files": {
+      "component": "card",
+      "acceptType": [
+        "image/jpg,png"
+      ],
+      "category": "image_to_image",
+      "minLimit": 1,
+      "maxLimit": 14
+    },
+    "credit_rules": [
+      {
+        "origin_point": 5,
+        "points": 5,
+        "attribute_id": 1611,
+        "attributes": {
+          "default": "enabled"
+        }
+      }
+    ],
+    "group_name": "SeeDream"
+  },
+  {
+    "id": "midjourney",
+    "parent_id": "Midjourney",
+    "type": "3",
+    "name": "Midjourney",
+    "icon": "https://ima.esxscloud.com/ima/images2/midjourney-2.png",
+    "model_id": "midjourney",
+    "tags": [
+      {
+        "tag_type": "EET",
+        "tag_value": "40~90s"
+      },
+      {
+        "tag_type": "point",
+        "tag_value": "8"
+      }
+    ],
+    "model_types": [
+      "text_to_image",
+      "image_to_image",
+      "image_to_video"
+    ],
+    "description": "Artist-level visual style",
+    "category_code": "image_to_image",
+    "category_name": "图生图",
+    "form_config": [
+      {
+        "type": "tags",
+        "field": "n",
+        "label": "numbers(4 pic/time)",
+        "description": "4 pic/time",
+        "value": "1",
+        "options": [
+          {
+            "label": "1",
+            "value": "1"
+          }
+        ],
+        "level": 1
+      },
+      {
+        "type": "tags",
+        "field": "resolution",
+        "label": "Resolution",
+        "description": "Output resolution determining content clarity",
+        "value": "480p",
+        "options": [
+          {
+            "label": "480p",
+            "value": "480p"
+          },
+          {
+            "label": "720p",
+            "value": "720p"
+          }
+        ],
+        "disabled_conditions": [
+          {
+            "enum_value": "*",
+            "disabled_key": "",
+            "disabled_value": null,
+            "category": "text_to_image"
+          },
+          {
+            "enum_value": "*",
+            "disabled_key": "",
+            "disabled_value": null,
+            "category": "image_to_image"
+          }
+        ],
+        "level": 1
+      }
+    ],
+    "credit_rules": [
+      {
+        "origin_point": 8,
+        "points": 8,
+        "attribute_id": 2464,
+        "attributes": {
+          "default": "enabled"
+        }
+      }
+    ],
+    "group_name": "Midjourney"
+  }
+]

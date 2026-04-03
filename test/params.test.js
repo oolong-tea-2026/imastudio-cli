@@ -96,14 +96,20 @@ const fs = require('fs');
 const path = require('path');
 
 /**
- * Load cached product data (must run `ima list-models <type>` first to populate cache).
+ * Load product data from test fixtures (bundled) or local cache (fallback).
  */
 function loadCachedProducts(taskType) {
+  // 1. Try bundled test fixtures first (CI-friendly)
+  const fixtureFile = path.join(__dirname, 'fixtures', `products_${taskType}.json`);
+  if (fs.existsSync(fixtureFile)) {
+    return JSON.parse(fs.readFileSync(fixtureFile, 'utf-8'));
+  }
+  // 2. Fallback to local cache
   const cacheFile = path.join(
     require('os').homedir(), '.imastudio', 'cache', `products_${taskType}.json`
   );
   if (!fs.existsSync(cacheFile)) {
-    throw new Error(`Cache not found: ${cacheFile}. Run: ima list-models ${taskType}`);
+    throw new Error(`Cache not found. Run: ima list-models ${taskType}`);
   }
   return JSON.parse(fs.readFileSync(cacheFile, 'utf-8'));
 }

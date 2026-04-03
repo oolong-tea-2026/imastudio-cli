@@ -1,0 +1,254 @@
+[
+  {
+    "id": "sonic",
+    "parent_id": "suno",
+    "type": "3",
+    "name": "Suno",
+    "icon": "https://ima.esxscloud.com/ima/images2/suno-2.png",
+    "model_id": "sonic",
+    "tags": [
+      {
+        "tag_type": "feature",
+        "tag_value": "NEW"
+      },
+      {
+        "tag_type": "EET",
+        "tag_value": "90~150s"
+      },
+      {
+        "tag_type": "point",
+        "tag_value": "25"
+      }
+    ],
+    "model_types": [
+      "text_to_music"
+    ],
+    "description": "Authentic vocals, superior audio, quality and control",
+    "category_code": "text_to_music",
+    "category_name": "文生音乐",
+    "form_config": [
+      {
+        "type": "toggle",
+        "field": "make_instrumental",
+        "label": "Instrumental",
+        "description": "When enabled",
+        "value": false,
+        "level": 2
+      },
+      {
+        "type": "toggle",
+        "field": "auto_lyrics",
+        "label": "Auto Lyrics",
+        "description": "Auto lyrics generation automatically creating lyric text based on music melody or theme",
+        "value": false,
+        "level": 2
+      },
+      {
+        "type": "toggle",
+        "field": "custom_mode",
+        "label": "Custom Mode",
+        "description": "Custom mode enabling user-defined special generation mode or configuration",
+        "value": true,
+        "level": 2
+      },
+      {
+        "type": "textarea",
+        "field": "gpt_description_prompt",
+        "label": "GPT Description Prompt",
+        "description": "Optional",
+        "value": null,
+        "config": {
+          "maximum": 400
+        },
+        "level": 2
+      },
+      {
+        "type": "tags",
+        "field": "model_version",
+        "label": "Model Version",
+        "description": "MV/music video mode generating music video style content",
+        "value": "sonic-v4",
+        "options": [
+          {
+            "label": "sonic-v3-5",
+            "value": "sonic-v3-5"
+          },
+          {
+            "label": "sonic-v4",
+            "value": "sonic-v4"
+          },
+          {
+            "label": "sonic-v4-5",
+            "value": "sonic-v4-5"
+          },
+          {
+            "label": "sonic-v4-5-plus",
+            "value": "sonic-v4-5-plus"
+          },
+          {
+            "label": "sonic-v5",
+            "value": "sonic-v5"
+          }
+        ],
+        "level": 2
+      },
+      {
+        "type": "textarea",
+        "field": "negative_tags",
+        "label": "Negative Tags",
+        "description": "Negative tags list specifying undesired elements in tag format",
+        "value": null,
+        "level": 2
+      },
+      {
+        "type": "textarea",
+        "field": "tags",
+        "label": "Style Tags",
+        "description": "Use keywords to specify genre/elements (e",
+        "value": null,
+        "config": {
+          "maximum": 1000
+        },
+        "level": 2
+      },
+      {
+        "type": "textarea",
+        "field": "title",
+        "label": "Title",
+        "description": "Title text setting title or name for con",
+        "value": null,
+        "config": {
+          "maximum": 120
+        },
+        "level": 2
+      },
+      {
+        "type": "tags",
+        "field": "vocal_gender",
+        "label": "Vocal Gender",
+        "description": "Vocal gender setting gender for generated or converted voice",
+        "value": null,
+        "options": [
+          {
+            "label": "m",
+            "value": "m"
+          },
+          {
+            "label": "f",
+            "value": "f"
+          }
+        ],
+        "level": 2
+      },
+      {
+        "type": "tags",
+        "field": "n",
+        "label": "output numbers(2 clips/time)",
+        "description": "N",
+        "value": "1",
+        "options": [
+          {
+            "label": "1",
+            "value": "1"
+          },
+          {
+            "label": "2",
+            "value": "2"
+          },
+          {
+            "label": "3",
+            "value": "3"
+          },
+          {
+            "label": "4",
+            "value": "4"
+          }
+        ],
+        "level": 1
+      }
+    ],
+    "credit_rules": [
+      {
+        "origin_point": 25,
+        "points": 25,
+        "attribute_id": 2370,
+        "attributes": {
+          "default": "enabled"
+        }
+      }
+    ],
+    "group_name": "suno"
+  },
+  {
+    "id": "GenBGM",
+    "parent_id": "doubao",
+    "type": "3",
+    "name": "DouBao - BGM",
+    "icon": "https://ima.esxscloud.com/ima/images2/doubao-2.png",
+    "model_id": "GenBGM",
+    "tags": [
+      {
+        "tag_type": "EET",
+        "tag_value": "60~120s"
+      },
+      {
+        "tag_type": "point",
+        "tag_value": "30"
+      }
+    ],
+    "model_types": [
+      "text_to_bgm",
+      "text_to_music"
+    ],
+    "description": "Powerful BGM model",
+    "category_code": "text_to_music",
+    "category_name": "文生音乐",
+    "credit_rules": [
+      {
+        "origin_point": 30,
+        "points": 30,
+        "attribute_id": 4399,
+        "attributes": {
+          "default": "enabled"
+        }
+      }
+    ],
+    "group_name": "doubao"
+  },
+  {
+    "id": "GenSong",
+    "parent_id": "doubao",
+    "type": "3",
+    "name": "DouBao - Song",
+    "icon": "https://ima.esxscloud.com/ima/images2/doubao-2.png",
+    "model_id": "GenSong",
+    "tags": [
+      {
+        "tag_type": "EET",
+        "tag_value": "90~150s"
+      },
+      {
+        "tag_type": "point",
+        "tag_value": "30"
+      }
+    ],
+    "model_types": [
+      "text_to_song",
+      "text_to_music"
+    ],
+    "description": "Economical model",
+    "category_code": "text_to_music",
+    "category_name": "文生音乐",
+    "credit_rules": [
+      {
+        "origin_point": 30,
+        "points": 30,
+        "attribute_id": 4398,
+        "attributes": {
+          "default": "enabled"
+        }
+      }
+    ],
+    "group_name": "doubao"
+  }
+]

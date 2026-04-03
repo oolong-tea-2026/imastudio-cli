@@ -1,0 +1,2148 @@
+[
+  {
+    "id": "ima-pro-fast",
+    "parent_id": "SeeDance",
+    "type": "3",
+    "name": "Seedance 2.0 fast",
+    "icon": "https://ima.esxscloud.com/ima/images2/doubao-2.png",
+    "model_id": "ima-pro-fast",
+    "tags": [
+      {
+        "tag_type": "feature",
+        "tag_value": "15s Video"
+      },
+      {
+        "tag_type": "feature",
+        "tag_value": "Fast"
+      },
+      {
+        "tag_type": "popularity",
+        "tag_value": "❤️New"
+      },
+      {
+        "tag_type": "popularity",
+        "tag_value": "🔥 HOT🔥 "
+      },
+      {
+        "tag_type": "point",
+        "tag_value": "65~230"
+      }
+    ],
+    "model_types": [
+      "text_to_video",
+      "image_to_video",
+      "first_last_frame_to_video",
+      "reference_image_to_video",
+      "multiple_reference_to_video",
+      "mix_reference_to_video"
+    ],
+    "description": "Fast video model version supporting multimodal references and up to 15-second generation.（Real-person faces are not supported at the moment.）",
+    "category_code": "reference_image_to_video",
+    "category_name": "参考生视频",
+    "form_config": [
+      {
+        "type": "toggle",
+        "field": "audio",
+        "label": "Generate Audio",
+        "description": "是否为生成视频附带音频",
+        "value": true,
+        "level": 1
+      },
+      {
+        "type": "tags",
+        "field": "duration",
+        "label": "Duration",
+        "description": "生成视频时长",
+        "value": 5,
+        "options": [
+          {
+            "label": "5",
+            "value": 5
+          },
+          {
+            "label": "10",
+            "value": 10
+          },
+          {
+            "label": "15",
+            "value": 15
+          }
+        ],
+        "config": {
+          "maximum": 15,
+          "minimum": 5
+        },
+        "level": 1
+      },
+      {
+        "type": "tags",
+        "field": "aspect_ratio",
+        "label": "Aspect Ratio",
+        "description": "视频宽高比",
+        "value": "16:9",
+        "options": [
+          {
+            "label": "1:1",
+            "value": "1:1"
+          },
+          {
+            "label": "4:3",
+            "value": "4:3"
+          },
+          {
+            "label": "3:4",
+            "value": "3:4"
+          },
+          {
+            "label": "16:9",
+            "value": "16:9"
+          },
+          {
+            "label": "9:16",
+            "value": "9:16"
+          },
+          {
+            "label": "21:9",
+            "value": "21:9"
+          },
+          {
+            "label": "adaptive",
+            "value": "adaptive"
+          }
+        ],
+        "level": 1
+      },
+      {
+        "type": "tags",
+        "field": "resolution",
+        "label": "Resolution",
+        "description": "视频分辨率",
+        "value": "720p",
+        "options": [
+          {
+            "label": "480p",
+            "value": "480p"
+          },
+          {
+            "label": "720p",
+            "value": "720p"
+          }
+        ],
+        "level": 1
+      }
+    ],
+    "files": {
+      "component": "card",
+      "acceptType": [
+        "image/jpg,jpeg,png,webp",
+        "video/mp4,mov,avi,webm",
+        "audio/mp3,wav"
+      ],
+      "category": "reference_image_to_video"
+    },
+    "credit_rules": [
+      {
+        "origin_point": 65,
+        "points": 65,
+        "attribute_id": 4674,
+        "attributes": {
+          "duration": 5,
+          "resolution": "480p"
+        }
+      },
+      {
+        "origin_point": 138,
+        "points": 138,
+        "attribute_id": 4675,
+        "attributes": {
+          "duration": 5,
+          "resolution": "720p"
+        }
+      },
+      {
+        "origin_point": 86,
+        "points": 86,
+        "attribute_id": 4676,
+        "attributes": {
+          "duration": 10,
+          "resolution": "480p"
+        }
+      },
+      {
+        "origin_point": 184,
+        "points": 184,
+        "attribute_id": 4677,
+        "attributes": {
+          "duration": 10,
+          "resolution": "720p"
+        }
+      },
+      {
+        "origin_point": 107,
+        "points": 107,
+        "attribute_id": 4678,
+        "attributes": {
+          "duration": 15,
+          "resolution": "480p"
+        }
+      },
+      {
+        "origin_point": 230,
+        "points": 230,
+        "attribute_id": 4679,
+        "attributes": {
+          "duration": 15,
+          "resolution": "720p"
+        }
+      }
+    ],
+    "group_name": "SeeDance 2.0"
+  },
+  {
+    "id": "ima-pro",
+    "parent_id": "SeeDance",
+    "type": "3",
+    "name": "Seedance 2.0",
+    "icon": "https://ima.esxscloud.com/ima/images2/doubao-2.png",
+    "model_id": "ima-pro",
+    "tags": [
+      {
+        "tag_type": "feature",
+        "tag_value": "15s Video"
+      },
+      {
+        "tag_type": "popularity",
+        "tag_value": "🔥 HOT🔥 "
+      },
+      {
+        "tag_type": "popularity",
+        "tag_value": "❤️New"
+      },
+      {
+        "tag_type": "point",
+        "tag_value": "82~293"
+      }
+    ],
+    "model_types": [
+      "text_to_video",
+      "image_to_video",
+      "first_last_frame_to_video",
+      "reference_image_to_video",
+      "multiple_reference_to_video",
+      "mix_reference_to_video"
+    ],
+    "description": "Video model version supporting multimodal references and up to 15-second generation.（Real-person faces are not supported at the moment.）",
+    "category_code": "reference_image_to_video",
+    "category_name": "参考生视频",
+    "form_config": [
+      {
+        "type": "toggle",
+        "field": "audio",
+        "label": "Generate Audio",
+        "description": "是否为生成视频附带音频",
+        "value": true,
+        "level": 1
+      },
+      {
+        "type": "tags",
+        "field": "duration",
+        "label": "Duration",
+        "description": "生成视频时长",
+        "value": 5,
+        "options": [
+          {
+            "label": "5",
+            "value": 5
+          },
+          {
+            "label": "10",
+            "value": 10
+          },
+          {
+            "label": "15",
+            "value": 15
+          }
+        ],
+        "config": {
+          "maximum": 15,
+          "minimum": 5
+        },
+        "level": 1
+      },
+      {
+        "type": "tags",
+        "field": "aspect_ratio",
+        "label": "Aspect Ratio",
+        "description": "视频宽高比",
+        "value": "16:9",
+        "options": [
+          {
+            "label": "1:1",
+            "value": "1:1"
+          },
+          {
+            "label": "4:3",
+            "value": "4:3"
+          },
+          {
+            "label": "3:4",
+            "value": "3:4"
+          },
+          {
+            "label": "16:9",
+            "value": "16:9"
+          },
+          {
+            "label": "9:16",
+            "value": "9:16"
+          },
+          {
+            "label": "21:9",
+            "value": "21:9"
+          },
+          {
+            "label": "adaptive",
+            "value": "adaptive"
+          }
+        ],
+        "is_ui_virtual": true,
+        "ui_params": [
+          {
+            "config": {
+              "type": "string"
+            },
+            "description": "Aspect Ratio - Sets the width-to-height ratio of output",
+            "field": "aspect_ratio",
+            "label": "Aspect Ratio",
+            "level": 1,
+            "options": [
+              {
+                "label": "1:1",
+                "value": "1:1"
+              },
+              {
+                "label": "4:3",
+                "value": "4:3"
+              },
+              {
+                "label": "3:4",
+                "value": "3:4"
+              },
+              {
+                "label": "16:9",
+                "value": "16:9"
+              },
+              {
+                "label": "9:16",
+                "value": "9:16"
+              },
+              {
+                "label": "21:9",
+                "value": "21:9"
+              },
+              {
+                "label": "adaptive",
+                "value": "adaptive"
+              }
+            ],
+            "required": true,
+            "type": "tags",
+            "value": "1:1"
+          }
+        ],
+        "value_mapping": {
+          "mapping_rules": [
+            {
+              "source_values": {
+                "aspect_ratio": "1:1"
+              },
+              "target_value": "1:1"
+            },
+            {
+              "source_values": {
+                "aspect_ratio": "4:3"
+              },
+              "target_value": "4:3"
+            },
+            {
+              "source_values": {
+                "aspect_ratio": "3:4"
+              },
+              "target_value": "3:4"
+            },
+            {
+              "source_values": {
+                "aspect_ratio": "16:9"
+              },
+              "target_value": "16:9"
+            },
+            {
+              "source_values": {
+                "aspect_ratio": "9:16"
+              },
+              "target_value": "9:16"
+            },
+            {
+              "source_values": {
+                "aspect_ratio": "21:9"
+              },
+              "target_value": "21:9"
+            },
+            {
+              "source_values": {
+                "aspect_ratio": "adaptive"
+              },
+              "target_value": "auto"
+            }
+          ],
+          "source_params": [
+            "aspect_ratio"
+          ],
+          "target_param": "aspect_ratio",
+          "type": "simple"
+        },
+        "level": 1
+      },
+      {
+        "type": "tags",
+        "field": "resolution",
+        "label": "Resolution",
+        "description": "视频分辨率",
+        "value": "720p",
+        "options": [
+          {
+            "label": "480p",
+            "value": "480p"
+          },
+          {
+            "label": "720p",
+            "value": "720p"
+          }
+        ],
+        "level": 1
+      }
+    ],
+    "files": {
+      "component": "card",
+      "acceptType": [
+        "image/jpg,jpeg,png,webp",
+        "video/mp4,mov,avi",
+        "audio/mp3,wav"
+      ],
+      "category": "reference_image_to_video"
+    },
+    "credit_rules": [
+      {
+        "origin_point": 82,
+        "points": 82,
+        "attribute_id": 4668,
+        "attributes": {
+          "duration": 5,
+          "resolution": "480p"
+        }
+      },
+      {
+        "origin_point": 176,
+        "points": 176,
+        "attribute_id": 4669,
+        "attributes": {
+          "duration": 5,
+          "resolution": "720p"
+        }
+      },
+      {
+        "origin_point": 109,
+        "points": 109,
+        "attribute_id": 4670,
+        "attributes": {
+          "duration": 10,
+          "resolution": "480p"
+        }
+      },
+      {
+        "origin_point": 234,
+        "points": 234,
+        "attribute_id": 4671,
+        "attributes": {
+          "duration": 10,
+          "resolution": "720p"
+        }
+      },
+      {
+        "origin_point": 136,
+        "points": 136,
+        "attribute_id": 4672,
+        "attributes": {
+          "duration": 15,
+          "resolution": "480p"
+        }
+      },
+      {
+        "origin_point": 293,
+        "points": 293,
+        "attribute_id": 4673,
+        "attributes": {
+          "duration": 15,
+          "resolution": "720p"
+        }
+      }
+    ],
+    "group_name": "SeeDance 2.0"
+  },
+  {
+    "id": "wan2.6-i2v",
+    "parent_id": "Wan",
+    "type": "3",
+    "name": "Wan 2.6",
+    "icon": "https://ima.esxscloud.com/ima/images2/wan-2.png",
+    "model_id": "wan2.6-i2v",
+    "tags": [
+      {
+        "tag_type": "feature",
+        "tag_value": "With Audio"
+      },
+      {
+        "tag_type": "EET",
+        "tag_value": "300~420s"
+      },
+      {
+        "tag_type": "point",
+        "tag_value": "25~120"
+      }
+    ],
+    "model_types": [
+      "image_to_video",
+      "audio_image_to_video",
+      "reference_image_to_video"
+    ],
+    "description": "Generate videos from images and audio with precise audio-visual   synchronization, balancing generation quality and cost efficiency.",
+    "category_code": "reference_image_to_video",
+    "category_name": "参考生视频",
+    "form_config": [
+      {
+        "type": "tags",
+        "field": "duration",
+        "label": "Duration",
+        "description": "Video duration in seconds",
+        "value": 5,
+        "options": [
+          {
+            "label": "5",
+            "value": 5
+          },
+          {
+            "label": "10",
+            "value": 10
+          },
+          {
+            "label": "15",
+            "value": 15
+          }
+        ],
+        "config": {
+          "maximum": 5,
+          "minimum": 5
+        },
+        "level": 1
+      },
+      {
+        "type": "tags",
+        "field": "resolution",
+        "label": "Resolution",
+        "description": "Output resolution determining content clarity",
+        "value": "1080P",
+        "options": [
+          {
+            "label": "720P",
+            "value": "720P"
+          },
+          {
+            "label": "1080P",
+            "value": "1080P"
+          }
+        ],
+        "level": 1
+      },
+      {
+        "type": "textarea",
+        "field": "negative_prompt",
+        "label": "Negative Prompt",
+        "description": "Negative prompt describing elements to avoid in generated results",
+        "value": "",
+        "config": {
+          "maximum": 800
+        },
+        "level": 2
+      },
+      {
+        "type": "toggle",
+        "field": "prompt_extend",
+        "label": "Prompt Extend",
+        "description": "Prompt extension feature using AI to automatically expand and optimize the original prompt",
+        "value": false,
+        "level": 2
+      },
+      {
+        "type": "tags",
+        "field": "shot_type",
+        "label": "Shot Type",
+        "description": "Shot type specifying camera angle and framing",
+        "value": "single",
+        "options": [
+          {
+            "label": "single",
+            "value": "single"
+          },
+          {
+            "label": "multi",
+            "value": "multi"
+          }
+        ],
+        "level": 2
+      },
+      {
+        "type": "textarea",
+        "field": "template",
+        "label": "Template",
+        "description": "Template selection providing preset parameter combinations or style templates",
+        "value": "",
+        "config": {
+          "maximum": 100,
+          "minimum": 0
+        },
+        "level": 2
+      }
+    ],
+    "files": {
+      "component": "card",
+      "acceptType": [
+        "image/jpg,jpeg,png,webp",
+        "audio/wav,mp3,m4a"
+      ],
+      "category": "reference_image_to_video"
+    },
+    "credit_rules": [
+      {
+        "origin_point": 25,
+        "points": 25,
+        "attribute_id": 4628,
+        "attributes": {
+          "duration": 5,
+          "resolution": "720P"
+        }
+      },
+      {
+        "origin_point": 40,
+        "points": 40,
+        "attribute_id": 4629,
+        "attributes": {
+          "duration": 5,
+          "resolution": "1080P"
+        }
+      },
+      {
+        "origin_point": 50,
+        "points": 50,
+        "attribute_id": 4630,
+        "attributes": {
+          "duration": 10,
+          "resolution": "720P"
+        }
+      },
+      {
+        "origin_point": 80,
+        "points": 80,
+        "attribute_id": 4631,
+        "attributes": {
+          "duration": 10,
+          "resolution": "1080P"
+        }
+      },
+      {
+        "origin_point": 75,
+        "points": 75,
+        "attribute_id": 4632,
+        "attributes": {
+          "duration": 15,
+          "resolution": "720P"
+        }
+      },
+      {
+        "origin_point": 120,
+        "points": 120,
+        "attribute_id": 4633,
+        "attributes": {
+          "duration": 15,
+          "resolution": "1080P"
+        }
+      }
+    ],
+    "group_name": "Wan"
+  },
+  {
+    "id": "viduq2",
+    "parent_id": "Vidu",
+    "type": "3",
+    "name": "Vidu Q2",
+    "icon": "https://ima.esxscloud.com/ima/images2/vidu-2.png",
+    "model_id": "viduq2",
+    "tags": [
+      {
+        "tag_type": "EET",
+        "tag_value": "120~180s"
+      },
+      {
+        "tag_type": "point",
+        "tag_value": "10~70"
+      }
+    ],
+    "model_types": [
+      "text_to_video",
+      "reference_image_to_video"
+    ],
+    "description": "High-quality video generation",
+    "category_code": "reference_image_to_video",
+    "category_name": "参考生视频",
+    "form_config": [
+      {
+        "type": "tags",
+        "field": "duration",
+        "label": "Duration",
+        "description": "Video duration in seconds",
+        "value": 5,
+        "options": [
+          {
+            "label": "5",
+            "value": 5
+          },
+          {
+            "label": "10",
+            "value": 10
+          }
+        ],
+        "level": 1
+      },
+      {
+        "type": "tags",
+        "field": "aspect_ratio",
+        "label": "Aspect Ratio",
+        "description": "Aspect ratio controlling frame proportion",
+        "value": "16:9",
+        "options": [
+          {
+            "label": "16:9",
+            "value": "16:9"
+          },
+          {
+            "label": "9:16",
+            "value": "9:16"
+          },
+          {
+            "label": "4:3",
+            "value": "4:3"
+          },
+          {
+            "label": "3:4",
+            "value": "3:4"
+          },
+          {
+            "label": "1:1",
+            "value": "1:1"
+          }
+        ],
+        "level": 1
+      },
+      {
+        "type": "tags",
+        "field": "resolution",
+        "label": "Resolution",
+        "description": "Output resolution determining content clarity",
+        "value": "720p",
+        "options": [
+          {
+            "label": "540p",
+            "value": "540p"
+          },
+          {
+            "label": "720p",
+            "value": "720p"
+          },
+          {
+            "label": "1080p",
+            "value": "1080p"
+          }
+        ],
+        "level": 1
+      },
+      {
+        "type": "toggle",
+        "field": "generate_audio",
+        "label": "Generate Audio",
+        "description": "Background music adding an audio track to generated video content",
+        "value": false,
+        "level": 1
+      },
+      {
+        "type": "tags",
+        "field": "movement_amplitude",
+        "label": "Movement Amplitude",
+        "description": "Movement amplitude controlling the degree of object or camera movement in videos",
+        "value": "auto",
+        "options": [
+          {
+            "label": "auto",
+            "value": "auto"
+          },
+          {
+            "label": "small",
+            "value": "small"
+          },
+          {
+            "label": "medium",
+            "value": "medium"
+          },
+          {
+            "label": "large",
+            "value": "large"
+          }
+        ],
+        "level": 1
+      }
+    ],
+    "files": {
+      "component": "card",
+      "acceptType": [
+        "image/jpg,png,jpeg,webp"
+      ],
+      "category": "reference_image_to_video",
+      "minLimit": 1,
+      "maxLimit": 3
+    },
+    "credit_rules": [
+      {
+        "origin_point": 10,
+        "points": 10,
+        "attribute_id": 1903,
+        "attributes": {
+          "duration": 5,
+          "resolution": "540p"
+        }
+      },
+      {
+        "origin_point": 15,
+        "points": 15,
+        "attribute_id": 1904,
+        "attributes": {
+          "duration": 5,
+          "resolution": "720p"
+        }
+      },
+      {
+        "origin_point": 35,
+        "points": 35,
+        "attribute_id": 1905,
+        "attributes": {
+          "duration": 5,
+          "resolution": "1080p"
+        }
+      },
+      {
+        "origin_point": 20,
+        "points": 20,
+        "attribute_id": 1906,
+        "attributes": {
+          "duration": 10,
+          "resolution": "540p"
+        }
+      },
+      {
+        "origin_point": 30,
+        "points": 30,
+        "attribute_id": 1907,
+        "attributes": {
+          "duration": 10,
+          "resolution": "720p"
+        }
+      },
+      {
+        "origin_point": 70,
+        "points": 70,
+        "attribute_id": 1908,
+        "attributes": {
+          "duration": 10,
+          "resolution": "1080p"
+        }
+      }
+    ],
+    "group_name": "Vidu"
+  },
+  {
+    "id": "viduq2-pro",
+    "parent_id": "Vidu",
+    "type": "3",
+    "name": "Vidu Q2 Pro",
+    "icon": "https://ima.esxscloud.com/ima/images2/vidu-2.png",
+    "model_id": "viduq2-pro",
+    "tags": [
+      {
+        "tag_type": "EET",
+        "tag_value": "160~240s"
+      },
+      {
+        "tag_type": "point",
+        "tag_value": "30~80"
+      }
+    ],
+    "model_types": [
+      "image_to_video",
+      "first_last_frame_to_video",
+      "reference_image_to_video"
+    ],
+    "description": "Professional-grade video output",
+    "category_code": "reference_image_to_video",
+    "category_name": "参考生视频",
+    "form_config": [
+      {
+        "type": "toggle",
+        "field": "generate_audio",
+        "label": "Generate Audio",
+        "description": "Generate natural-sounding",
+        "value": false,
+        "level": 1
+      },
+      {
+        "type": "tags",
+        "field": "duration",
+        "label": "Duration",
+        "description": "Video duration in seconds",
+        "value": 4,
+        "options": [
+          {
+            "label": "4",
+            "value": 4
+          },
+          {
+            "label": "8",
+            "value": 8
+          }
+        ],
+        "level": 1
+      },
+      {
+        "type": "tags",
+        "field": "aspect_ratio",
+        "label": "Aspect Ratio",
+        "description": "Aspect ratio controlling frame proportion",
+        "value": "16:9",
+        "options": [
+          {
+            "label": "16:9",
+            "value": "16:9"
+          },
+          {
+            "label": "9:16",
+            "value": "9:16"
+          },
+          {
+            "label": "4:3",
+            "value": "4:3"
+          },
+          {
+            "label": "3:4",
+            "value": "3:4"
+          },
+          {
+            "label": "1:1",
+            "value": "1:1"
+          }
+        ],
+        "level": 1
+      },
+      {
+        "type": "tags",
+        "field": "resolution",
+        "label": "Resolution",
+        "description": "Output resolution determining content clarity",
+        "value": "720p",
+        "options": [
+          {
+            "label": "540p",
+            "value": "540p"
+          },
+          {
+            "label": "720p",
+            "value": "720p"
+          },
+          {
+            "label": "1080p",
+            "value": "1080p"
+          }
+        ],
+        "level": 1
+      },
+      {
+        "type": "tags",
+        "field": "movement_amplitude",
+        "label": "Movement Amplitude",
+        "description": "Movement amplitude controlling the degree of object or camera movement in videos",
+        "value": "auto",
+        "options": [
+          {
+            "label": "auto",
+            "value": "auto"
+          },
+          {
+            "label": "small",
+            "value": "small"
+          },
+          {
+            "label": "medium",
+            "value": "medium"
+          },
+          {
+            "label": "large",
+            "value": "large"
+          }
+        ],
+        "level": 2
+      }
+    ],
+    "files": {
+      "component": "card",
+      "acceptType": [
+        "image/jpg,jpeg,png,webp",
+        "video/mp4,mov,avi"
+      ],
+      "category": "reference_image_to_video"
+    },
+    "credit_rules": [
+      {
+        "origin_point": 30,
+        "points": 30,
+        "attribute_id": 4634,
+        "attributes": {
+          "duration": 4,
+          "resolution": "540p"
+        }
+      },
+      {
+        "origin_point": 40,
+        "points": 40,
+        "attribute_id": 4635,
+        "attributes": {
+          "duration": 4,
+          "resolution": "720p"
+        }
+      },
+      {
+        "origin_point": 50,
+        "points": 50,
+        "attribute_id": 4636,
+        "attributes": {
+          "duration": 4,
+          "resolution": "1080p"
+        }
+      },
+      {
+        "origin_point": 60,
+        "points": 60,
+        "attribute_id": 4637,
+        "attributes": {
+          "duration": 8,
+          "resolution": "540p"
+        }
+      },
+      {
+        "origin_point": 70,
+        "points": 70,
+        "attribute_id": 4638,
+        "attributes": {
+          "duration": 8,
+          "resolution": "720p"
+        }
+      },
+      {
+        "origin_point": 80,
+        "points": 80,
+        "attribute_id": 4639,
+        "attributes": {
+          "duration": 8,
+          "resolution": "1080p"
+        }
+      }
+    ],
+    "group_name": "Vidu"
+  },
+  {
+    "id": "kling-video-o1",
+    "parent_id": "Kling",
+    "type": "3",
+    "name": "Kling O1",
+    "icon": "https://ima.esxscloud.com/ima/images2/kling-2.png",
+    "model_id": "kling-video-o1",
+    "tags": [
+      {
+        "tag_type": "feature",
+        "tag_value": "NEW"
+      },
+      {
+        "tag_type": "EET",
+        "tag_value": "240~360s"
+      },
+      {
+        "tag_type": "point",
+        "tag_value": "48~120"
+      }
+    ],
+    "model_types": [
+      "text_to_video",
+      "image_to_video",
+      "first_last_frame_to_video",
+      "reference_image_to_video"
+    ],
+    "description": "Strong reference capabilities",
+    "category_code": "reference_image_to_video",
+    "category_name": "参考生视频",
+    "form_config": [
+      {
+        "type": "tags",
+        "field": "duration",
+        "label": "Duration",
+        "description": "Video duration in seconds",
+        "value": "5",
+        "options": [
+          {
+            "label": "5",
+            "value": "5"
+          },
+          {
+            "label": "10",
+            "value": "10"
+          }
+        ],
+        "level": 1
+      },
+      {
+        "type": "tags",
+        "field": "aspect_ratio",
+        "label": "Aspect Ratio",
+        "description": "Aspect ratio controlling frame proportion",
+        "value": "16:9",
+        "options": [
+          {
+            "label": "16:9",
+            "value": "16:9"
+          },
+          {
+            "label": "9:16",
+            "value": "9:16"
+          },
+          {
+            "label": "1:1",
+            "value": "1:1"
+          }
+        ],
+        "level": 1
+      },
+      {
+        "type": "tags",
+        "field": "mode",
+        "label": "Mode",
+        "description": "Generation mode selecting different generation strategies or styles",
+        "value": "std",
+        "options": [
+          {
+            "label": "std",
+            "value": "std"
+          },
+          {
+            "label": "pro",
+            "value": "pro"
+          }
+        ],
+        "is_ui_virtual": true,
+        "ui_params": [
+          {
+            "config": {
+              "type": "string"
+            },
+            "description": "Generation Quality - Controls the clarity level of output",
+            "field": "quality",
+            "label": "Quality",
+            "level": 1,
+            "options": [
+              {
+                "label": "720p",
+                "value": "720p"
+              },
+              {
+                "label": "1080p",
+                "value": "1080p"
+              }
+            ],
+            "required": true,
+            "type": "tags",
+            "value": "720p"
+          }
+        ],
+        "value_mapping": {
+          "mapping_rules": [
+            {
+              "source_values": {
+                "quality": "720p"
+              },
+              "target_value": "std"
+            },
+            {
+              "source_values": {
+                "quality": "1080p"
+              },
+              "target_value": "pro"
+            }
+          ],
+          "source_params": [
+            "quality"
+          ],
+          "target_param": "mode",
+          "type": "simple"
+        },
+        "level": 1
+      }
+    ],
+    "files": {
+      "component": "card",
+      "acceptType": [
+        "image/jpg,jpeg,png",
+        "video/mp4,mov,avi"
+      ],
+      "category": "reference_image_to_video"
+    },
+    "credit_rules": [
+      {
+        "origin_point": 48,
+        "points": 48,
+        "attribute_id": 2325,
+        "attributes": {
+          "duration": "5",
+          "mode": "std"
+        }
+      },
+      {
+        "origin_point": 60,
+        "points": 60,
+        "attribute_id": 2326,
+        "attributes": {
+          "duration": "5",
+          "mode": "pro"
+        }
+      },
+      {
+        "origin_point": 96,
+        "points": 96,
+        "attribute_id": 2327,
+        "attributes": {
+          "duration": "10",
+          "mode": "std"
+        }
+      },
+      {
+        "origin_point": 120,
+        "points": 120,
+        "attribute_id": 2328,
+        "attributes": {
+          "duration": "10",
+          "mode": "pro"
+        }
+      }
+    ],
+    "group_name": "Kling"
+  },
+  {
+    "id": "veo-3.1-generate-preview",
+    "parent_id": "Google Veo",
+    "type": "3",
+    "name": "Google Veo 3.1",
+    "icon": "https://ima.esxscloud.com/ima/images2/veo-2.png",
+    "model_id": "veo-3.1-generate-preview",
+    "tags": [
+      {
+        "tag_type": "feature",
+        "tag_value": "SOTA"
+      },
+      {
+        "tag_type": "EET",
+        "tag_value": "180~300s"
+      },
+      {
+        "tag_type": "point",
+        "tag_value": "70~330"
+      }
+    ],
+    "model_types": [
+      "text_to_video",
+      "image_to_video",
+      "reference_image_to_video",
+      "first_last_frame_to_video"
+    ],
+    "description": "Realistic physics and natural movement",
+    "category_code": "reference_image_to_video",
+    "category_name": "参考生视频",
+    "form_config": [
+      {
+        "type": "toggle",
+        "field": "generate_audio",
+        "label": "Generate Audio",
+        "description": "Generate natural-sounding",
+        "value": false,
+        "level": 1
+      },
+      {
+        "type": "tags",
+        "field": "duration",
+        "label": "Duration",
+        "description": "Duration in seconds specifying the length of generated content",
+        "value": 8,
+        "options": [
+          {
+            "label": "8",
+            "value": 8
+          }
+        ],
+        "config": {
+          "maximum": 8,
+          "minimum": 8
+        },
+        "disabled_conditions": [
+          {
+            "enum_value": 4,
+            "disabled_key": "",
+            "disabled_value": null,
+            "category": "reference_image_to_video"
+          },
+          {
+            "enum_value": 6,
+            "disabled_key": "",
+            "disabled_value": null,
+            "category": "reference_image_to_video"
+          }
+        ],
+        "level": 1
+      },
+      {
+        "type": "tags",
+        "field": "aspect_ratio",
+        "label": "Aspect Ratio",
+        "description": "Aspect ratio (same as aspect_ratio) controlling frame proportion",
+        "value": "16:9",
+        "options": [
+          {
+            "label": "16:9",
+            "value": "16:9"
+          }
+        ],
+        "disabled_conditions": [
+          {
+            "enum_value": "9:16",
+            "disabled_key": "",
+            "disabled_value": null,
+            "category": "reference_image_to_video"
+          }
+        ],
+        "level": 1
+      },
+      {
+        "type": "tags",
+        "field": "resolution",
+        "label": "Resolution",
+        "description": "Output resolution determining content clarity",
+        "value": "1080p",
+        "options": [
+          {
+            "label": "1080p",
+            "value": "1080p",
+            "disabled": {
+              "duration": [
+                4,
+                6
+              ]
+            }
+          }
+        ],
+        "disabled_conditions": [
+          {
+            "enum_value": "720p",
+            "disabled_key": "",
+            "disabled_value": null,
+            "category": "reference_image_to_video"
+          }
+        ],
+        "level": 1
+      },
+      {
+        "type": "textarea",
+        "field": "negative_prompt",
+        "label": "Negative Prompt",
+        "description": "Negative prompt (same as negative_prompt) describing undesired elements",
+        "value": null,
+        "config": {
+          "maximum": 200
+        },
+        "level": 2
+      },
+      {
+        "type": "tags",
+        "field": "compression_quality",
+        "label": "Compression Quality",
+        "description": "Compression quality controlling output file compression level",
+        "value": "optimized",
+        "options": [
+          {
+            "label": "optimized",
+            "value": "optimized"
+          },
+          {
+            "label": "lossless",
+            "value": "lossless"
+          }
+        ],
+        "level": 2
+      }
+    ],
+    "files": {
+      "component": "card",
+      "acceptType": [
+        "image/jpg,png"
+      ],
+      "category": "reference_image_to_video",
+      "minLimit": 1,
+      "maxLimit": 3
+    },
+    "credit_rules": [
+      {
+        "origin_point": 140,
+        "points": 140,
+        "attribute_id": 2373,
+        "attributes": {
+          "duration": 4,
+          "generate_audio": true,
+          "resolution": "720p"
+        }
+      },
+      {
+        "origin_point": 190,
+        "points": 190,
+        "attribute_id": 2374,
+        "attributes": {
+          "duration": 4,
+          "generate_audio": true,
+          "resolution": "1080p"
+        }
+      },
+      {
+        "origin_point": 70,
+        "points": 70,
+        "attribute_id": 2375,
+        "attributes": {
+          "duration": 4,
+          "generate_audio": false,
+          "resolution": "720p"
+        }
+      },
+      {
+        "origin_point": 120,
+        "points": 120,
+        "attribute_id": 2376,
+        "attributes": {
+          "duration": 4,
+          "generate_audio": false,
+          "resolution": "1080p"
+        }
+      },
+      {
+        "origin_point": 210,
+        "points": 210,
+        "attribute_id": 2377,
+        "attributes": {
+          "duration": 6,
+          "generate_audio": true,
+          "resolution": "720p"
+        }
+      },
+      {
+        "origin_point": 260,
+        "points": 260,
+        "attribute_id": 2378,
+        "attributes": {
+          "duration": 6,
+          "generate_audio": true,
+          "resolution": "1080p"
+        }
+      },
+      {
+        "origin_point": 105,
+        "points": 105,
+        "attribute_id": 2379,
+        "attributes": {
+          "duration": 6,
+          "generate_audio": false,
+          "resolution": "720p"
+        }
+      },
+      {
+        "origin_point": 155,
+        "points": 155,
+        "attribute_id": 2380,
+        "attributes": {
+          "duration": 6,
+          "generate_audio": false,
+          "resolution": "1080p"
+        }
+      },
+      {
+        "origin_point": 280,
+        "points": 280,
+        "attribute_id": 2381,
+        "attributes": {
+          "duration": 8,
+          "generate_audio": true,
+          "resolution": "720p"
+        }
+      },
+      {
+        "origin_point": 330,
+        "points": 330,
+        "attribute_id": 2382,
+        "attributes": {
+          "duration": 8,
+          "generate_audio": true,
+          "resolution": "1080p"
+        }
+      },
+      {
+        "origin_point": 140,
+        "points": 140,
+        "attribute_id": 2383,
+        "attributes": {
+          "duration": 8,
+          "generate_audio": false,
+          "resolution": "720p"
+        }
+      },
+      {
+        "origin_point": 190,
+        "points": 190,
+        "attribute_id": 2384,
+        "attributes": {
+          "duration": 8,
+          "generate_audio": false,
+          "resolution": "1080p"
+        }
+      }
+    ],
+    "group_name": "Google Veo"
+  },
+  {
+    "id": "Pixverse V5.5",
+    "parent_id": "Pixverse",
+    "type": "3",
+    "name": "Pixverse V5.5",
+    "icon": "https://ima.esxscloud.com/ima/images2/pixverse-2.png",
+    "model_id": "pixverse",
+    "tags": [
+      {
+        "tag_type": "EET",
+        "tag_value": "90~150s"
+      },
+      {
+        "tag_type": "feature",
+        "tag_value": "audio"
+      },
+      {
+        "tag_type": "point",
+        "tag_value": "12~48"
+      }
+    ],
+    "model_types": [
+      "text_to_video",
+      "image_to_video",
+      "first_last_frame_to_video",
+      "reference_image_to_video"
+    ],
+    "description": "Strong audio-video sync, supports multi-shot storytelling",
+    "category_code": "reference_image_to_video",
+    "category_name": "参考生视频",
+    "form_config": [
+      {
+        "type": "tags",
+        "field": "aspect_ratio",
+        "label": "Aspect Ratio",
+        "description": "Aspect ratio controlling frame proportion",
+        "value": "16:9",
+        "options": [
+          {
+            "label": "16:9",
+            "value": "16:9"
+          },
+          {
+            "label": "9:16",
+            "value": "9:16"
+          },
+          {
+            "label": "4:3",
+            "value": "4:3"
+          },
+          {
+            "label": "3:4",
+            "value": "3:4"
+          },
+          {
+            "label": "1:1",
+            "value": "1:1"
+          }
+        ],
+        "level": 1
+      },
+      {
+        "type": "tags",
+        "field": "resolution",
+        "label": "Quality",
+        "description": "Quality level setting overall quality tier of generated content",
+        "value": "540p",
+        "options": [
+          {
+            "label": "540p",
+            "value": "540p"
+          },
+          {
+            "label": "720p",
+            "value": "720p"
+          },
+          {
+            "label": "1080p",
+            "value": "1080p",
+            "disabled": {
+              "duration": [
+                8
+              ]
+            }
+          }
+        ],
+        "level": 1
+      },
+      {
+        "type": "tags",
+        "field": "model",
+        "label": "model",
+        "description": "Model",
+        "value": "v5.5",
+        "options": [
+          {
+            "label": "v5.5",
+            "value": "v5.5"
+          }
+        ],
+        "level": 2
+      },
+      {
+        "type": "textarea",
+        "field": "negative_prompt",
+        "label": "Negative Prompt",
+        "description": "Negative prompt describing elements to avoid in generated results",
+        "value": null,
+        "config": {
+          "maximum": 2500
+        },
+        "level": 2
+      },
+      {
+        "type": "tags",
+        "field": "duration",
+        "label": "Duration",
+        "description": "Video duration in seconds",
+        "value": 5,
+        "options": [
+          {
+            "label": "5",
+            "value": 5
+          },
+          {
+            "label": "8",
+            "value": 8,
+            "disabled": {
+              "resolution": [
+                "1080p"
+              ]
+            }
+          }
+        ],
+        "level": 1
+      }
+    ],
+    "files": {
+      "component": "card",
+      "acceptType": [
+        "image/jpg,jpeg,png,webp"
+      ],
+      "category": "reference_image_to_video",
+      "minLimit": 0,
+      "maxLimit": 3
+    },
+    "credit_rules": [
+      {
+        "origin_point": 12,
+        "points": 12,
+        "attribute_id": 4344,
+        "attributes": {
+          "duration": 5,
+          "resolution": "540p"
+        }
+      },
+      {
+        "origin_point": 15,
+        "points": 15,
+        "attribute_id": 4345,
+        "attributes": {
+          "duration": 5,
+          "resolution": "720p"
+        }
+      },
+      {
+        "origin_point": 30,
+        "points": 30,
+        "attribute_id": 4346,
+        "attributes": {
+          "duration": 5,
+          "resolution": "1080p"
+        }
+      },
+      {
+        "origin_point": 20,
+        "points": 20,
+        "attribute_id": 4347,
+        "attributes": {
+          "duration": 8,
+          "resolution": "540p"
+        }
+      },
+      {
+        "origin_point": 24,
+        "points": 24,
+        "attribute_id": 4348,
+        "attributes": {
+          "duration": 8,
+          "resolution": "720p"
+        }
+      },
+      {
+        "origin_point": 48,
+        "points": 48,
+        "attribute_id": 4349,
+        "attributes": {
+          "duration": 8,
+          "resolution": "1080p"
+        }
+      }
+    ],
+    "group_name": "Pixverse"
+  },
+  {
+    "id": "Pixverse V5",
+    "parent_id": "Pixverse",
+    "type": "3",
+    "name": "Pixverse V5",
+    "icon": "https://ima.esxscloud.com/ima/images2/pixverse-2.png",
+    "model_id": "pixverse",
+    "tags": [
+      {
+        "tag_type": "EET",
+        "tag_value": "90~150s"
+      },
+      {
+        "tag_type": "point",
+        "tag_value": "12~48"
+      }
+    ],
+    "model_types": [
+      "text_to_video",
+      "image_to_video",
+      "first_last_frame_to_video",
+      "reference_image_to_video"
+    ],
+    "description": " Natural movements, excellent consistency, outstanding quality.",
+    "category_code": "reference_image_to_video",
+    "category_name": "参考生视频",
+    "form_config": [
+      {
+        "type": "tags",
+        "field": "duration",
+        "label": "Duration",
+        "description": "Video duration in seconds",
+        "value": 5,
+        "options": [
+          {
+            "label": "5",
+            "value": 5
+          },
+          {
+            "label": "8",
+            "value": 8,
+            "disabled": {
+              "resolution": [
+                "1080p"
+              ]
+            }
+          }
+        ],
+        "level": 1
+      },
+      {
+        "type": "tags",
+        "field": "aspect_ratio",
+        "label": "Aspect Ratio",
+        "description": "Aspect ratio controlling frame proportion",
+        "value": "16:9",
+        "options": [
+          {
+            "label": "16:9",
+            "value": "16:9"
+          },
+          {
+            "label": "9:16",
+            "value": "9:16"
+          },
+          {
+            "label": "4:3",
+            "value": "4:3"
+          },
+          {
+            "label": "3:4",
+            "value": "3:4"
+          },
+          {
+            "label": "1:1",
+            "value": "1:1"
+          }
+        ],
+        "level": 1
+      },
+      {
+        "type": "tags",
+        "field": "resolution",
+        "label": "Quality",
+        "description": "Quality level setting overall quality tier of generated content",
+        "value": "540p",
+        "options": [
+          {
+            "label": "540p",
+            "value": "540p"
+          },
+          {
+            "label": "720p",
+            "value": "720p"
+          },
+          {
+            "label": "1080p",
+            "value": "1080p",
+            "disabled": {
+              "duration": [
+                8
+              ]
+            }
+          }
+        ],
+        "level": 1
+      },
+      {
+        "type": "tags",
+        "field": "model",
+        "label": "model",
+        "description": "Model",
+        "value": "v5",
+        "options": [
+          {
+            "label": "v5",
+            "value": "v5"
+          }
+        ],
+        "level": 2
+      },
+      {
+        "type": "textarea",
+        "field": "negative_prompt",
+        "label": "Negative Prompt",
+        "description": "Negative prompt describing elements to avoid in generated results",
+        "value": null,
+        "config": {
+          "maximum": 2500
+        },
+        "level": 2
+      }
+    ],
+    "files": {
+      "component": "card",
+      "acceptType": [
+        "image/jpg,jpeg,png,webp"
+      ],
+      "category": "reference_image_to_video",
+      "minLimit": 0,
+      "maxLimit": 3
+    },
+    "credit_rules": [
+      {
+        "origin_point": 12,
+        "points": 12,
+        "attribute_id": 4338,
+        "attributes": {
+          "duration": 5,
+          "resolution": "540p"
+        }
+      },
+      {
+        "origin_point": 15,
+        "points": 15,
+        "attribute_id": 4339,
+        "attributes": {
+          "duration": 8,
+          "resolution": "540p"
+        }
+      },
+      {
+        "origin_point": 30,
+        "points": 30,
+        "attribute_id": 4340,
+        "attributes": {
+          "duration": 5,
+          "resolution": "720p"
+        }
+      },
+      {
+        "origin_point": 20,
+        "points": 20,
+        "attribute_id": 4341,
+        "attributes": {
+          "duration": 8,
+          "resolution": "720p"
+        }
+      },
+      {
+        "origin_point": 24,
+        "points": 24,
+        "attribute_id": 4342,
+        "attributes": {
+          "duration": 5,
+          "resolution": "1080p"
+        }
+      },
+      {
+        "origin_point": 48,
+        "points": 48,
+        "attribute_id": 4343,
+        "attributes": {
+          "duration": 8,
+          "resolution": "1080p"
+        }
+      }
+    ],
+    "group_name": "Pixverse"
+  },
+  {
+    "id": "Pixverse V4.5",
+    "parent_id": "Pixverse",
+    "type": "3",
+    "name": "Pixverse V4.5",
+    "icon": "https://ima.esxscloud.com/ima/images2/pixverse-2.png",
+    "model_id": "pixverse",
+    "tags": [
+      {
+        "tag_type": "EET",
+        "tag_value": "90~150s"
+      },
+      {
+        "tag_type": "point",
+        "tag_value": "12~48"
+      }
+    ],
+    "model_types": [
+      "text_to_video",
+      "image_to_video",
+      "first_last_frame_to_video",
+      "reference_image_to_video"
+    ],
+    "description": "Better details & clothing, great for IP characters.",
+    "category_code": "reference_image_to_video",
+    "category_name": "参考生视频",
+    "form_config": [
+      {
+        "type": "tags",
+        "field": "duration",
+        "label": "Duration",
+        "description": "Video duration in seconds",
+        "value": 5,
+        "options": [
+          {
+            "label": "5",
+            "value": 5
+          },
+          {
+            "label": "8",
+            "value": 8,
+            "disabled": {
+              "resolution": [
+                "1080p"
+              ]
+            }
+          }
+        ],
+        "level": 1
+      },
+      {
+        "type": "tags",
+        "field": "aspect_ratio",
+        "label": "Aspect Ratio",
+        "description": "Aspect ratio controlling frame proportion",
+        "value": "16:9",
+        "options": [
+          {
+            "label": "16:9",
+            "value": "16:9"
+          },
+          {
+            "label": "9:16",
+            "value": "9:16"
+          },
+          {
+            "label": "4:3",
+            "value": "4:3"
+          },
+          {
+            "label": "3:4",
+            "value": "3:4"
+          },
+          {
+            "label": "1:1",
+            "value": "1:1"
+          }
+        ],
+        "level": 1
+      },
+      {
+        "type": "tags",
+        "field": "resolution",
+        "label": "Quality",
+        "description": "Quality level setting overall quality tier of generated content",
+        "value": "540p",
+        "options": [
+          {
+            "label": "540p",
+            "value": "540p"
+          },
+          {
+            "label": "720p",
+            "value": "720p"
+          },
+          {
+            "label": "1080p",
+            "value": "1080p",
+            "disabled": {
+              "duration": [
+                8
+              ]
+            }
+          }
+        ],
+        "level": 1
+      },
+      {
+        "type": "textarea",
+        "field": "negative_prompt",
+        "label": "Negative Prompt",
+        "description": "Negative prompt describing elements to avoid in generated results",
+        "value": null,
+        "config": {
+          "maximum": 2500
+        },
+        "level": 2
+      },
+      {
+        "type": "tags",
+        "field": "model",
+        "label": "Model version",
+        "description": "Model",
+        "value": "v4.5",
+        "options": [
+          {
+            "label": "v4.5",
+            "value": "v4.5"
+          }
+        ],
+        "level": 2
+      }
+    ],
+    "files": {
+      "component": "card",
+      "acceptType": [
+        "image/jpg,jpeg,png,webp"
+      ],
+      "category": "reference_image_to_video",
+      "minLimit": 0,
+      "maxLimit": 3
+    },
+    "credit_rules": [
+      {
+        "origin_point": 12,
+        "points": 12,
+        "attribute_id": 4328,
+        "attributes": {
+          "duration": 5,
+          "resolution": "540p"
+        }
+      },
+      {
+        "origin_point": 15,
+        "points": 15,
+        "attribute_id": 4329,
+        "attributes": {
+          "duration": 8,
+          "resolution": "540p"
+        }
+      },
+      {
+        "origin_point": 30,
+        "points": 30,
+        "attribute_id": 4330,
+        "attributes": {
+          "duration": 5,
+          "resolution": "720p"
+        }
+      },
+      {
+        "origin_point": 20,
+        "points": 20,
+        "attribute_id": 4331,
+        "attributes": {
+          "duration": 8,
+          "resolution": "720p"
+        }
+      },
+      {
+        "origin_point": 24,
+        "points": 24,
+        "attribute_id": 4332,
+        "attributes": {
+          "duration": 5,
+          "resolution": "1080p"
+        }
+      },
+      {
+        "origin_point": 48,
+        "points": 48,
+        "attribute_id": 4333,
+        "attributes": {
+          "duration": 8,
+          "resolution": "1080p"
+        }
+      }
+    ],
+    "group_name": "Pixverse"
+  }
+]
