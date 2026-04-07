@@ -55,6 +55,7 @@ module.exports = function registerDoctor(program) {
         console.log(`  ${bold('API Key:')}    ${red('✗')} not configured`);
         console.log(`  ${bold('API:')}         ${dim('skipped (no key)')}`);
         console.log(`\n  Run ${cyan('ima init')} to configure your API key.`);
+        console.log(`  Get your API key at: ${cyan('https://imastudio.com')}`);
       }
 
       console.log();
