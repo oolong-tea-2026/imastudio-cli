@@ -45,9 +45,8 @@ module.exports = function registerDoctor(program) {
         process.stdout.write(`  ${bold('API:')}         `);
         try {
           const client = new ImaClient(apiKey);
-          const products = await client.listProducts('text_to_image');
-          const count = products.length;
-          console.log(`${green('✓')} Connected (${count} model groups)`);
+          await client.listProducts('text_to_image');
+          console.log(`${green('✓')} Connected`);
         } catch (err) {
           console.log(`${red('✗')} ${err.message}`);
         }
