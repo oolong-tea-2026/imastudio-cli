@@ -5,7 +5,7 @@ const ffmpegPath = require('ffmpeg-static');
 
 module.exports = function registerFmPack(program) {
   program
-    .command('fm-pack')
+    .command('ffmpeg')
     .description('Run ffmpeg (bundled static binary) — all arguments are passed through')
     .allowUnknownOption(true)
     .allowExcessArguments(true)

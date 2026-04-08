@@ -7,7 +7,7 @@ const ffprobePath = typeof ffprobeStatic === 'string' ? ffprobeStatic : ffprobeS
 
 module.exports = function registerFmProbe(program) {
   program
-    .command('fm-probe')
+    .command('ffprobe')
     .description('Run ffprobe (bundled static binary) — all arguments are passed through')
     .allowUnknownOption(true)
     .allowExcessArguments(true)

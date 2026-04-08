@@ -14,8 +14,8 @@ const registerCreateTask = require('../src/commands/create-task');
 const registerTaskStatus = require('../src/commands/task-status');
 const registerInit = require('../src/commands/init');
 const registerDoctor = require('../src/commands/doctor');
-const registerFmPack = require('../src/commands/fm-pack');
-const registerFmProbe = require('../src/commands/fm-probe');
+const registerFfmpeg = require('../src/commands/ffmpeg');
+const registerFfprobe = require('../src/commands/ffprobe');
 
 program
   .name('ima')
@@ -34,8 +34,8 @@ registerUpload(program);
 registerCreateTask(program);
 registerTaskStatus(program);
 registerDoctor(program);
-registerFmPack(program);
-registerFmProbe(program);
+registerFfmpeg(program);
+registerFfprobe(program);
 
 program.parse(process.argv);
 
