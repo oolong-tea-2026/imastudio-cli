@@ -256,6 +256,17 @@ module.exports = function registerCreateTask(program) {
         console.log(`Check later: ${cyan(`ima task-status ${taskId}`)}`);
         process.exit(2);
       } catch (err) {
+        // Subscription-required hint for Seedance 2.0 (ima-pro)
+        if (err.name === 'ApiError' && err.code === 4014 && opts.model === 'ima-pro') {
+          console.error(`${red('✗')} API Error (4014): ${err.message}\n`);
+          console.error(`  Seedance 2.0 (ima-pro) requires an active subscription.\n`);
+          console.error(`  You have two options:\n`);
+          console.error(`  ${cyan('A.')} Use Seedance 2.0 Fast instead (no subscription required):`);
+          console.error(`     ${dim('ima create-task --model ima-pro-fast ...')}\n`);
+          console.error(`  ${cyan('B.')} Upgrade your subscription plan to unlock ima-pro:`);
+          console.error(`     ${dim('https://www.imaclaw.ai/imaclaw/subscription')}\n`);
+          process.exit(1);
+        }
         handleError(err);
       }
     });
