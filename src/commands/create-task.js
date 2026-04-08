@@ -82,6 +82,8 @@ module.exports = function registerCreateTask(program) {
     .option('--wait', 'Wait for task to complete and print result URL')
     .option('--poll-interval <seconds>', 'Polling interval in seconds (default: 5)', '5')
     .option('--timeout <seconds>', 'Max wait time in seconds (default: 300)', '300')
+    .option('--compliance-check', 'Run asset compliance verification before task creation (default: true)', true)
+    .option('--no-compliance-check', 'Skip asset compliance verification')
     .action(async (opts, cmd) => {
       const rootOpts = cmd.optsWithGlobals();
 
@@ -113,6 +115,43 @@ module.exports = function registerCreateTask(program) {
         // 3. Upload input images if provided
         const inputImageUrls = await resolveInputImages(params.input_images, apiKey);
         delete params.input_images;
+
+        // 3.5. Asset compliance verification (Seedance 2.0 models + media-input task types)
+        const SEEDANCE_MODELS = new Set(['ima-pro', 'ima-pro-fast']);
+        const COMPLIANCE_TASK_TYPES = new Set([
+          'image_to_video',
+          'first_last_frame_to_video',
+          'reference_image_to_video',
+        ]);
+
+        const needsCompliance =
+          opts.complianceCheck !== false &&
+          SEEDANCE_MODELS.has(model.model_id) &&
+          COMPLIANCE_TASK_TYPES.has(opts.taskType) &&
+          inputImageUrls.length > 0;
+
+        if (needsCompliance) {
+          const spinV = spinner(`Verifying ${inputImageUrls.length} asset(s) for compliance...`);
+          for (let i = 0; i < inputImageUrls.length; i++) {
+            const url = inputImageUrls[i];
+            const result = await client.verifyAsset(url);
+            const status = (result.status || '').toLowerCase();
+            if (status !== 'active' && status !== 'success') {
+              spinV.stop(`${red('✗')} Compliance check failed`);
+              const reason = (result.error && result.error.message) || status || 'unknown';
+              console.error(`${red('✗')} Asset ${i + 1} rejected: ${reason}`);
+              process.exit(1);
+            }
+          }
+          spinV.stop(`${green('✓')} All ${inputImageUrls.length} asset(s) verified`);
+        } else if (
+          opts.complianceCheck === false &&
+          SEEDANCE_MODELS.has(model.model_id) &&
+          COMPLIANCE_TASK_TYPES.has(opts.taskType) &&
+          inputImageUrls.length > 0
+        ) {
+          console.log(`${yellow('⚠')} Compliance check skipped (--no-compliance-check)`);
+        }
 
         // 4. Build inner params using tested logic (virtual resolution, credit rule selection, normalization)
         const { prompt, ...extraParams } = params;

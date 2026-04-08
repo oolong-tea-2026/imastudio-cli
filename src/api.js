@@ -134,6 +134,21 @@ class ImaClient {
     const res = await this.post('/open/v1/tasks/detail', { task_id: taskId });
     return res.data;
   }
+
+  /**
+   * Verify an asset for compliance.
+   * The API is synchronous but may take up to 5 minutes.
+   *
+   * @param {string} assetUrl  CDN URL of the uploaded asset
+   * @param {string} [name]    Optional display name (max 64 chars)
+   * @returns {{ id: string, status: string, asset_type: string, error?: { code: string, message: string } }}
+   */
+  async verifyAsset(assetUrl, name) {
+    const body = { url: assetUrl };
+    if (name) body.name = name.slice(0, 64);
+    const res = await this.post('/open/v1/assets/verify', body, { timeout: 300000 });
+    return (res.data && res.data.result) || {};
+  }
 }
 
 /**
